@@ -4,9 +4,15 @@ module.exports = {
   assetsDir: "",
   outputDir: "dist",
   pwa: {
-    workboxPluginMode: "GenerateSW",
+    name: 'movue',
+    themeColor: '',
+    themeColor: '#2d3748',
+    msTileColor: '#2d3748',
+    appleMobileWebAppCapable: 'no',
+    appleMobileWebAppStatusBarStyle: 'default',
+    workboxPluginMode: 'GenerateSW',
     workboxOptions:{
-      exclude: "CNAME"
+      exclude: ["CNAME", /chunk-vendors.*.css.map/ ]
     }
   }
 };
