@@ -1,16 +1,13 @@
 <template>
   <div class="home">
-    <div 
-      v-for="i in show" :key=i
-    >
-      <img v-for="(_, j) in pages[i].ImagesUrl" :key=j :src="pages[i].ImagesUrl[j]" alt="" width="100%">
-    </div>
+    <ViewerContent></ViewerContent>
     <div >Todo: footerコンポーネントを実装する </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import ViewerContent from "../components/ViewerContent.vue";
 
 export default {
   name: "Home",
@@ -19,6 +16,7 @@ export default {
     pages : window.pageData.slice(0,5)
   }),
   components: {
+    ViewerContent
   }
 };
 </script>
