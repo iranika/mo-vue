@@ -22,9 +22,10 @@ export default {
   methods: {
     bottomVisible(){
       const scrollY = window.scrollY;
-      const visible = document.documentElement.clientHeight;
+      const visible = window.innerHeight;
       const pageHeight = document.documentElement.scrollHeight;
       const bottomOfPage = visible + scrollY >= pageHeight;
+      //console.log("bottomVisible is fired", {scrollY, visible, pageHeight, bottomOfPage})
       return bottomOfPage || pageHeight < visible
     },
     addContent(addnum = 1){
@@ -38,22 +39,25 @@ export default {
       }else{
         console.log("viewerContent info: show.length is over pages.length")
       }
+    },
+    onScroll(){
+      this.bottom = this.bottomVisible();
+
     }
   },
   watch:{
     bottom(bottom){
       if (bottom){
-        if (bottom){
-          this.addContent()
-        }
+        this.addContent()
       }
     }
   },
   created(){
-    window.addEventListener("scroll", ()=>{
-      this.bottom = this.bottomVisible();
-    })
+    window.addEventListener('scroll', this.onScroll)
     this.addContent()
+  },
+  destroyed(){
+    window.removeEventListener('scroll', this.onScroll)
   }
 
 };
