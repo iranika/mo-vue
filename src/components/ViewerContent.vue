@@ -24,7 +24,7 @@ export default {
       const scrollY = window.scrollY;
       const visible = window.innerHeight;
       const pageHeight = document.documentElement.scrollHeight;
-      const bottomOfPage = visible + scrollY >= pageHeight;
+      const bottomOfPage = visible + scrollY + 2 >= pageHeight; // +2 is margin
       //console.log("bottomVisible is fired", {scrollY, visible, pageHeight, bottomOfPage})
       return bottomOfPage || pageHeight < visible
     },
