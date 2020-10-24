@@ -25,25 +25,16 @@
           <v-tab>News</v-tab>
         </v-tabs>
       </template>
-      <v-spacer></v-spacer>
-      <v-menu bottom left>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on">
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
 
-        <v-list>
-          <v-list-item v-for="(item, i) in items" :key="i">
-            <v-list-item-title>{{ item }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+      <v-spacer></v-spacer>
+      <title-list-menu
+        v-bind:items="pageData"
+      ></title-list-menu>
     </v-app-bar>
     <v-main>
       <router-view> </router-view>
     </v-main>
-        <v-navigation-drawer v-model="drawer" fixed temporary>
+    <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
         <v-list-item-group
           v-model="group"
@@ -69,16 +60,19 @@
 </template>
 
 <script>
+import TitleListMenu from "./components/TitleListMenu.vue";
+
 export default {
   name: "App",
 
-  components: {},
-
+  components: {
+    TitleListMenu
+  },
   data: () => ({
-    items: ["AAAAAAAAAAAAA", "BBBBBBBBBBBBBBBBBBBBBBBBB", "CCCCCCCCCCCCCCCCCCCCCCCCC"],
     drawer: false,
     group: null,
-    isTabShow: true
+    isTabShow: true,
+    pageData: window.pageData
   })
 };
 </script>
