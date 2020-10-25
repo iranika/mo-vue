@@ -54,7 +54,7 @@ export default {
       console.log(pageInt)
       if (this.page === "latest") {
         this.show.push(this.pages.length - 1)
-      }else if (pageInt > 0 && pageInt < this.pages.length){
+      }else if (pageInt > 0 && pageInt <= this.pages.length){
         this.show.push(pageInt - 1)
       } else if (pageInt <= 0){
         this.show.push(0)
