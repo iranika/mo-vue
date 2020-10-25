@@ -9,7 +9,7 @@
       <v-list-item 
         v-for="(item, i) in items"
         :key="i"
-        :href="getPageUrl(i)"
+        :href="getPageUrl(i + 1)"
       >
         <v-list-item-content>
           <v-list-item-title>{{ i + 1 }}.{{ item.Title }}</v-list-item-title>

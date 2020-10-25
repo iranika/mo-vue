@@ -14,8 +14,14 @@
 
 <script>
 export default {
+  props:{
+    page: {
+      type: String,
+      default: "1",
+    }
+  },
   data: () => ({
-    show: [0],
+    show : [],
     pages : window.pageData,
     bottom: false
   }),
@@ -29,7 +35,7 @@ export default {
       return bottomOfPage || pageHeight < visible
     },
     addContent(addnum = 1){
-      if (this.pages.length > this.show.length){
+      if (this.pages.length -1 > Math.max.apply(null, this.show)){
         this.show.push(
           Math.max.apply(null, this.show) + addnum
         )
@@ -42,7 +48,25 @@ export default {
     },
     onScroll(){
       this.bottom = this.bottomVisible();
-
+    },
+    setShow(){
+      const pageInt = parseInt(this.page)
+      console.log(pageInt)
+      if (this.page === "latest") {
+        this.show.push(this.pages.length - 1)
+      }else if (pageInt > 0 && pageInt < this.pages.length){
+        this.show.push(pageInt - 1)
+      } else if (pageInt <= 0){
+        this.show.push(0)
+      } else{
+        this.show.push(0)
+        console.log("?page query is unknown value")
+      }
+    },
+    InitShow(){
+      this.show = []
+      this.setShow()
+      console.log(this.show)
     }
   },
   watch:{
@@ -50,16 +74,19 @@ export default {
       if (bottom){
         this.addContent()
       }
+    },
+    page(){
+      this.InitShow()
     }
   },
   created(){
     window.addEventListener('scroll', this.onScroll)
+    this.setShow()
     this.addContent()
   },
   destroyed(){
     window.removeEventListener('scroll', this.onScroll)
   }
-
 };
 </script>
 

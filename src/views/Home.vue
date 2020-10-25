@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <ViewerContent></ViewerContent>
+    <ViewerContent
+      :page=page
+    ></ViewerContent>
     <div>Todo: Footerの実装</div>
   </div>
 </template>
@@ -11,6 +13,9 @@ import ViewerContent from "../components/ViewerContent.vue";
 
 export default {
   name: "Home",
+  props: {
+    page: String
+  },
   data: () => ({
   }),
   components: {
