@@ -39,9 +39,6 @@ export default {
         this.show.push(
           Math.max.apply(null, this.show) + addnum
         )
-        if (this.bottomVisible()){
-          //this.addContent()
-        }
       }else{
         console.log("viewerContent info: show.length is over pages.length")
       }
@@ -66,12 +63,12 @@ export default {
     InitShow(){
       this.show = []
       this.setShow()
-      console.log(this.show)
+      this.addContent()
     }
   },
   watch:{
-    bottom(bottom){
-      if (bottom){
+    bottom(){
+      if (this.bottom){
         this.addContent()
       }
     },
