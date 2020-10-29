@@ -3,13 +3,14 @@
     <ViewerContent
       :page=page
     ></ViewerContent>
-    <div>Todo: Footerの実装</div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import ViewerContent from "../components/ViewerContent.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "Home",
@@ -19,7 +20,8 @@ export default {
   data: () => ({
   }),
   components: {
-    ViewerContent
+    ViewerContent,
+    Footer
   }
 };
 </script>
