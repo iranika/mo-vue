@@ -1,6 +1,7 @@
 <template>
   <v-footer
     padless
+    style="padding-top: 10px;"
   >
     <v-card-text class="pt-0 text-center">
       みちくさびゅあーは道草屋の著作者である桃鳥様から許諾を得てiranikaがを提供・公開しています。
