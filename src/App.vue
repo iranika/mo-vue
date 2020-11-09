@@ -9,6 +9,7 @@
       prominent
       dense
       collapse-on-scroll
+      clipped-right
     >
       <template v-slot:img="{ props }">
         <v-img
@@ -31,7 +32,9 @@
         v-bind:items="pageData"
       ></title-list-menu>
     </v-app-bar>
-    <v-main>
+    <v-main
+      class="bg"
+    >
       <router-view> </router-view>
     </v-main>
     <v-navigation-drawer v-model="drawer" fixed temporary>
@@ -76,3 +79,11 @@ export default {
   })
 };
 </script>
+
+<style>
+.bg {
+  background-image: url("./assets/bg.jpg");
+  background-repeat: repeat;
+  background-size: 100%;
+}
+</style>
