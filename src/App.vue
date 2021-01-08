@@ -4,7 +4,7 @@
       app
       color="light-green"
       dark
-      src="https://iranika.github.io/mo-code/img/backtatami2.jpg"
+      src="https://mo4koma.iranika.info/top/top.jpg"
       shrink-on-scroll
       prominent
       dense
@@ -14,7 +14,7 @@
       <template v-slot:img="{ props }">
         <v-img
           v-bind="props"
-          gradient="to top right, rgba(0,100,160,.7), rgba(0,160,100,.7)"
+          gradient="to top right, rgba(0,100,160,.8), rgba(0,160,100,.2)"
         ></v-img>
       </template>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
