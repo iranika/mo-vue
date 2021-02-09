@@ -4,7 +4,9 @@
     style="padding-top: 10px;"
   >
     <v-card-text class="pt-0 text-center">
-      みちくさびゅあーは道草屋の著作者である桃鳥様から許諾を得てiranikaが提供・公開しています。
+      ばっくやーど数こま漫画は桃鳥様の著作物です。<br />
+      このアプリは桃鳥様の許諾を得てiranikaが公開しています。<br />
+      もしこのアプリが気に入ったら、<a href="https://www.amazon.co.jp/hz/wishlist/genericItemsPage">欲しいものリスト</a>でプレゼントを送ってあげてください。喜びのあまり小躍りします。
     </v-card-text>
       
     <v-divider></v-divider>
