@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "css/chunk-vendors.51c56c37.css"
   },
   {
-    "revision": "78775457e68c3095a302c0c90a61b288",
+    "revision": "be0ffebc26cfe9c2282ddefa424f4067",
     "url": "favicon.ico"
   },
   {
@@ -20,19 +20,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/bg.b83c9e78.jpg"
   },
   {
-    "revision": "9e571f729b546eabdbd435cb14035d89",
+    "revision": "1c980941f9f8d22805a8e0bc6c72f495",
     "url": "img/icons/android-chrome-192x192.png"
   },
   {
-    "revision": "87f4693d4ec3e03ed98e9dabc525f66a",
+    "revision": "73fdc301924bfe4ce979617a2f44db93",
     "url": "img/icons/android-chrome-512x512.png"
   },
   {
-    "revision": "4f4a3e42dc479685fbff40c021fabf95",
+    "revision": "76c2d48fd0f9dd052941c6818a60ec40",
     "url": "img/icons/favicon-16x16.png"
   },
   {
-    "revision": "eafab6eb38c08156418cf780ca589afb",
+    "revision": "be0ffebc26cfe9c2282ddefa424f4067",
     "url": "img/icons/favicon-32x32.png"
   },
   {
