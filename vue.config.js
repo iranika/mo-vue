@@ -4,7 +4,7 @@ module.exports = {
   assetsDir: "",
   outputDir: "dist",
   pwa: {
-    name: 'movue',
+    name: 'みちくさびゅあー',
     themeColor: '',
     themeColor: '#2d3748',
     msTileColor: '#2d3748',
