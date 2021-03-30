@@ -31,7 +31,7 @@
         v-bind:items="pageData"
       ></title-list-menu>
     </v-app-bar>
-        <v-navigation-drawer v-model="drawer" fixed temporary>
+    <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
         <v-subheader>みちくさびゅあー</v-subheader>
         <v-list-item-group
@@ -40,23 +40,68 @@
         >
           <v-list-item to="/">
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon dense>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>ホーム</v-list-item-title>
           </v-list-item>
           <v-list-item to="/?page=latest">
             <v-list-item-icon>
-              <v-icon>mdi-book</v-icon>
+              <v-icon dense>mdi-book</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Latest</v-list-item-title>
+            <v-list-item-title>最新話</v-list-item-title>
           </v-list-item>
           <v-list-item to="/About">
             <v-list-item-icon>
-              <v-icon>mdi-information</v-icon>
+              <v-icon dense>mdi-information</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>About</v-list-item-title>
+            <v-list-item-title>このアプリについて</v-list-item-title>
           </v-list-item>
-
+          <v-spacer></v-spacer>
+        </v-list-item-group>
+      </v-list>
+      <v-list nav dense>
+        <v-subheader>外部リンク</v-subheader>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item href="https://www.dlsite.com/home/dlaf/=/aid/iranica/url/https%3A%2F%2Fwww.dlsite.com%2Fmaniax%2Fcircle%2Fprofile%2F%3D%2Fmaker_id%2FRG24350.html%2F%3Futm_medium%3Daffiliate%26utm_campaign%3Dbnlink%26utm_content%3Dtext">
+            <v-list-item-icon>
+              <v-icon dense>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>DLsiteのページ</v-list-item-title>
+          </v-list-item>
+          <v-list-item href="http://momoirocode.web.fc2.com/">
+            <v-list-item-icon>
+              <v-icon dense>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>桃色CODE</v-list-item-title>
+          </v-list-item>
+          <v-list-item href="http://blog.livedoor.jp/kai_tyou/">
+            <v-list-item-icon>
+              <v-icon dense>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>雑記的な（ブログ）</v-list-item-title>
+          </v-list-item>
+          <v-expansion-panels flat>
+            <v-expansion-panel>
+              <v-expansion-panel-header><div class="text-center">ご予約でんわ</div></v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-list-item href="https://drive.google.com/file/d/1J5SxzMVJqG7Uz9Fi4bQPUWQryKQj61dm/view?usp=sharing">
+                  <v-list-item-title>スマホでご予約(3月) New!</v-list-item-title>
+                </v-list-item>
+                <v-list-item href="https://drive.google.com/file/d/1QUCJdqzNTbRU5xePPyUhzhUBkbTrtdvN/view?usp=sharing">
+                  <v-list-item-title>スマホでご予約(12月)</v-list-item-title>
+                </v-list-item>
+                <v-list-item href="https://drive.google.com/file/d/1mSLIY7be7dW8illnkGmOicHNHjwq_YsP/view?usp=sharing">
+                  <v-list-item-title>スマホでご予約(7月)</v-list-item-title>
+                </v-list-item>
+                <v-list-item href="https://drive.google.com/file/d/1ThgXkrvkUEPnbup1uR-1ubiJgS2p_f6-/view?usp=sharing">
+                  <v-list-item-title>スマホでご予約(3月)</v-list-item-title>
+                </v-list-item>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
