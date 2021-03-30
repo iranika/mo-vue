@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Infomation></Infomation>
     <ViewerContent
       :page=page
     ></ViewerContent>
@@ -11,6 +12,7 @@
 // @ is an alias to /src
 import ViewerContent from "../components/ViewerContent.vue";
 import Footer from "../components/Footer.vue";
+import Infomation from "../components/Infomation.vue";
 
 export default {
   name: "Home",
@@ -21,7 +23,8 @@ export default {
   }),
   components: {
     ViewerContent,
-    Footer
+    Footer,
+    Infomation
   }
 };
 </script>

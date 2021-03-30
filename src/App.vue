@@ -87,18 +87,9 @@
             <v-expansion-panel>
               <v-expansion-panel-header><div class="text-center">ご予約でんわ</div></v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-list-item href="https://drive.google.com/file/d/1J5SxzMVJqG7Uz9Fi4bQPUWQryKQj61dm/view?usp=sharing">
-                  <v-list-item-title>スマホでご予約(3月) New!</v-list-item-title>
-                </v-list-item>
-                <v-list-item href="https://drive.google.com/file/d/1QUCJdqzNTbRU5xePPyUhzhUBkbTrtdvN/view?usp=sharing">
-                  <v-list-item-title>スマホでご予約(12月)</v-list-item-title>
-                </v-list-item>
-                <v-list-item href="https://drive.google.com/file/d/1mSLIY7be7dW8illnkGmOicHNHjwq_YsP/view?usp=sharing">
-                  <v-list-item-title>スマホでご予約(7月)</v-list-item-title>
-                </v-list-item>
-                <v-list-item href="https://drive.google.com/file/d/1ThgXkrvkUEPnbup1uR-1ubiJgS2p_f6-/view?usp=sharing">
-                  <v-list-item-title>スマホでご予約(3月)</v-list-item-title>
-                </v-list-item>
+                <YoyakuList
+                  v-bind:items="goyoyaku"
+                ></YoyakuList>
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
@@ -116,18 +107,21 @@
 
 <script>
 import TitleListMenu from "./components/TitleListMenu.vue";
+import YoyakuList from "./components/YoyakuList.vue";
 
 export default {
   name: "App",
 
   components: {
-    TitleListMenu
+    TitleListMenu,
+    YoyakuList
   },
   data: () => ({
     drawer: false,
     group: null,
     isTabShow: true,
-    pageData: window.pageData
+    pageData: window.pageData,
+    goyoyaku: window.goyoyaku
   })
 };
 </script>
