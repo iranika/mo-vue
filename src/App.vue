@@ -95,6 +95,20 @@
           </v-expansion-panels>
         </v-list-item-group>
       </v-list>
+      <v-list nav dense>
+        <v-subheader>いらにかの何か</v-subheader>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item href="https://michikusa-renka.glideapp.io/" target="new">
+            <v-list-item-icon>
+              <v-icon dense>mdi-apps</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>道草恋歌</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
     </v-navigation-drawer>
 
     <v-main
