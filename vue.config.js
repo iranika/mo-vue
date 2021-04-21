@@ -12,7 +12,7 @@ module.exports = {
     appleMobileWebAppStatusBarStyle: 'default',
     workboxPluginMode: 'GenerateSW',
     workboxOptions:{
-    exclude: ["CNAME", /chunk-vendors.*.css.map/ , /about.*.css.map/ , /app.*.css.map/, /bg.*.jpg/]
+    exclude: ["CNAME", /chunk-vendors.*.css.map/ , /about.*.css.map/ , /app.*.css.map/]
     }
   }
 };
