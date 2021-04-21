@@ -16,10 +16,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "favicon.ico"
   },
   {
-    "revision": "b83c9e78acd6aacd934a4a885c988587",
-    "url": "img/bg.b83c9e78.jpg"
-  },
-  {
     "revision": "ae7c9f318e17bb9a38997e011c4d4dd0",
     "url": "img/favicon.ico"
   },
@@ -40,7 +36,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/icons/favicon-32x32.png"
   },
   {
-    "revision": "d0471d4122207c5b16df20eebc75064c",
+    "revision": "69c42941f17d4fc385cad08f0f243b32",
     "url": "index.html"
   },
   {
