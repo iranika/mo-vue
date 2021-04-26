@@ -1,6 +1,21 @@
 <template>
 <div>
-  <div v-for="i in show" :key="i">
+  <div
+    centered
+    style="text-align:center; padding:10px"
+    v-if="Math.min.apply(null, show) > 0"
+  >
+    <v-btn
+      small
+      v-on:click="BeforeContent()"
+      rounded
+    >▲前のお話▲</v-btn>
+  </div>
+  <div
+    v-for="i in show"
+    :key="i"
+    :id="'page-' + i"
+  >
     <img
       v-for="(_, j) in pages[i].ImagesUrl"
       :key="j"
@@ -8,9 +23,23 @@
       alt=""
       width="100%"
     />
-    <ShareTwitterButton
-      :link="CreateShareLinkTwitter(i + 1, pages[i].Title )"
-    ></ShareTwitterButton>
+    <div
+      style="display: flex; justify-content: center;"
+    >
+      <ShareTwitterButton
+        :link="CreateShareLinkTwitter(i + 1, pages[i].Title )"
+      ></ShareTwitterButton>
+      <div
+        style="text-align: center"
+      >
+        <v-btn
+          rounded
+          x-small
+          v-on:click="scrollTop()"
+          depressed
+        >トップに戻る</v-btn>
+      </div>
+    </div>
   </div>
   <div
     centered
@@ -21,7 +50,7 @@
       small
       v-on:click="addContent()"
       v-if="pages.length -1 > Math.max.apply(null, show)"
-    >続きを表示</v-btn>
+    >▼続きを表示▼</v-btn>
 
   </div>
 </div>
@@ -39,6 +68,7 @@ export default {
   },
   data: () => ({
     show : [],
+    enableBack: false,
     pages : window.pageData,
     bottom: false
   }),
@@ -59,6 +89,18 @@ export default {
       }else{
         console.log("viewerContent info: show.length is over pages.length")
       }
+    },
+    BeforeContent(){
+      if (Math.min.apply(null, this.show) > 0){
+        this.show.unshift(
+          Math.min.apply(null, this.show) - 1
+        )
+      }else{
+        console.log("viewerContent info: can not show page under 0")
+      }
+    },
+    scrollTop(){
+      scrollTo(0,0);
     },
     onScroll(){
       this.bottom = this.bottomVisible();
