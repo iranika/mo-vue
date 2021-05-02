@@ -6,7 +6,12 @@
       </v-btn>
     </template>
     <v-list>
-      <v-list-item 
+      <v-list-item to="search">
+        <v-list-item-content>
+          <v-list-item-title>詳細検索をひらく</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item
         v-for="(item, i) in items"
         :key="i"
         :href="getPageUrl(i + 1)"
@@ -33,5 +38,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <Infomation></Infomation>
-    <ViewerContent
-      :page=page
-    ></ViewerContent>
+    <ViewerContent :page="page"></ViewerContent>
     <Footer></Footer>
   </div>
 </template>
@@ -19,8 +17,7 @@ export default {
   props: {
     page: String
   },
-  data: () => ({
-  }),
+  data: () => ({}),
   components: {
     ViewerContent,
     Footer,

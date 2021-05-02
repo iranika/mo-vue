@@ -27,9 +27,7 @@
         </v-tabs>
       </template>
       <v-spacer></v-spacer>
-      <title-list-menu
-        v-bind:items="pageData"
-      ></title-list-menu>
+      <title-list-menu v-bind:items="pageData"></title-list-menu>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
@@ -65,7 +63,9 @@
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
-          <v-list-item href="https://www.dlsite.com/home/dlaf/=/aid/iranica/url/https%3A%2F%2Fwww.dlsite.com%2Fmaniax%2Fcircle%2Fprofile%2F%3D%2Fmaker_id%2FRG24350.html%2F%3Futm_medium%3Daffiliate%26utm_campaign%3Dbnlink%26utm_content%3Dtext">
+          <v-list-item
+            href="https://www.dlsite.com/home/dlaf/=/aid/iranica/url/https%3A%2F%2Fwww.dlsite.com%2Fmaniax%2Fcircle%2Fprofile%2F%3D%2Fmaker_id%2FRG24350.html%2F%3Futm_medium%3Daffiliate%26utm_campaign%3Dbnlink%26utm_content%3Dtext"
+          >
             <v-list-item-icon>
               <v-icon dense>mdi-home</v-icon>
             </v-list-item-icon>
@@ -85,11 +85,13 @@
           </v-list-item>
           <v-expansion-panels flat>
             <v-expansion-panel>
-              <v-expansion-panel-header><div class="text-center">ご予約でんわ</div></v-expansion-panel-header>
+              <v-expansion-panel-header
+                ><div class="text-center">
+                  ご予約でんわ
+                </div></v-expansion-panel-header
+              >
               <v-expansion-panel-content>
-                <YoyakuList
-                  v-bind:items="goyoyaku"
-                ></YoyakuList>
+                <YoyakuList v-bind:items="goyoyaku"></YoyakuList>
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
@@ -111,9 +113,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main
-      class="bg"
-    >
+    <v-main class="bg">
       <router-view> </router-view>
     </v-main>
   </v-app>
