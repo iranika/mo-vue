@@ -48,6 +48,13 @@
             </v-list-item-icon>
             <v-list-item-title>最新話</v-list-item-title>
           </v-list-item>
+          <v-list-item to="/search">
+            <v-list-item-icon>
+              <v-icon dense>mdi-information</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>びゅあー検索くんα</v-list-item-title>
+          </v-list-item>
+
           <v-list-item to="/About">
             <v-list-item-icon>
               <v-icon dense>mdi-information</v-icon>
