@@ -1,5 +1,5 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
+import VueRouter from 'vue-router';
 import Home from "../views/Home.vue";
 import SearchEngine from "../views/Search.vue";
 
@@ -10,7 +10,7 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
-    props: route => ({
+    props: (route: { query: { page: any; }; }) => ({
       page: route.query.page
     })
   },

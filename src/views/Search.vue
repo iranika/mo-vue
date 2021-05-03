@@ -7,7 +7,7 @@
       <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
-        label="searchDB"
+        label="検索する文字を選んでね"
         single-line
         hide-details
       ></v-text-field>
