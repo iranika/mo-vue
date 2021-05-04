@@ -26,7 +26,10 @@ const routes = [
   {
     path: "/search",
     name: "search",
-    component: SearchEngine
+    component: SearchEngine,
+    props: (route: { query: { page: any; }; }) => ({
+      page: route.query.page
+    })
   }
 ];
 

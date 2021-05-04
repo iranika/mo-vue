@@ -98,11 +98,48 @@
 
 <script lang="ts">
 import { Component, Vue} from "vue-property-decorator";
-import searchdb from "@/assets/searchdb.json";
+//import searchdb from "@/assets/searchdb.json";
+import axios from "axios";
+
+declare global{
+  interface Window { pageData: any }
+}
 
 @Component({})
 export default class SearchEngine extends Vue {
-  public searchDB: any = searchdb;
+  public searchDBurl: string = "https://script.googleusercontent.com/macros/echo?user_content_key=NThpzjglj7FbD99yZ6RnaOqnwAwJOO5EYSCO0UNHxPcXNjMUsIkPjH9LzdmsD8FSZYfzSF31fvtJLaTKXMWgqO1SmjJkBKbem5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLtYoXURHZLmZvPthmVxjRzhu0rg91qwOtstRRhXejmVyj020cWACD2zocqZ38kKahh_FJugdRsTMPBtt8VPcQXpgRXNPjBhqtz9Jw9Md8uu&lib=MXoYVWDjXav9p1UuYgY7Olog19xxae7g_"
+  public searchDB: any = [
+    {
+        "Title": "都会派",
+        "ImagesUrl": [
+            "https://mo4koma.iranika.info/4koma/ja/1.jpg"
+        ],
+        "Charactors": [
+            "せり",
+            "すずな"
+        ],
+        "Keyword": [
+            "きっぷ"
+        ],
+        "Comment": "きっぷが買えるなんてずなちゃんは都会派だね！"
+    },
+  ];
+  public exDB: any = "";
+  public pageData: any = "";
+
+  created(){
+    //console.log(this.pageData)
+    axios.get(this.searchDBurl).then(res => {
+      this.pageData = window.pageData || {};
+      this.exDB = res.data;
+      this.searchDB = this.pageData.map((v:any,i: number) => {
+        return Object.assign(v, this.exDB[i][i]);
+      })
+      console.log(this.searchDB);
+    })
+  };
+
+
   public search = "";
   public filter(items: any, search: string){
     if (items == null || typeof items === "boolean") return false;
@@ -123,6 +160,7 @@ export default class SearchEngine extends Vue {
     { text: "コメント", value: "Comment", },
     { text: "Link", value: "PageLink" },
   ];
+
 
   public getPageLink(item: any): string {
     let pageNum: Number = this.searchDB.map((x: any)=>{ return x.Title }).indexOf(item.Title) + 1
