@@ -2,7 +2,7 @@
   <div style="display:flex; justify-content:center;">
     <v-card width="90%" max-width="900px" class="ma-4">
       <v-card-title>
-        びゅあー検索くん㌁
+        びゅあー検索くん㌁ver0.1
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -106,7 +106,7 @@ export default class SearchEngine extends Vue {
   public search = "";
   public filter(items: any, search: string){
     if (items == null || typeof items === "boolean") return false;
-    let words = search.split(",").map((w: string) => { return w.trim() }).filter(x => x)
+    let words = search.split(/,|、/).map((w: string) => { return w.trim() }).filter(x => x)
     return (words.filter(w => {
       if (Array.isArray(items)){
         return items.filter((x: string) => x.indexOf(w) !== -1).length > 0;
