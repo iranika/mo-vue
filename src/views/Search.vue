@@ -2,7 +2,7 @@
   <div style="display:flex; justify-content:center;">
     <v-card width="90%" max-width="900px" class="ma-4">
       <v-card-title>
-        びゅあー検索くん㌁ver0.1
+        びゅあー検索くん㌁ver0.2
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -27,7 +27,7 @@
         <template
             v-slot:[`item.No`]="{ item }"
           >
-            {{ searchDB.map((x)=>{ return x.Title }).indexOf(item.Title) + 1 }}
+            {{ Number(searchDB.map((x)=>{ return x.Title }).indexOf(item.Title) + 1) }}
         </template>
         <template
           v-slot:[`item.Charactors`]="{ item }"
@@ -107,7 +107,8 @@ declare global{
 
 @Component({})
 export default class SearchEngine extends Vue {
-  public searchDBurl: string = "https://script.googleusercontent.com/macros/echo?user_content_key=NThpzjglj7FbD99yZ6RnaOqnwAwJOO5EYSCO0UNHxPcXNjMUsIkPjH9LzdmsD8FSZYfzSF31fvtJLaTKXMWgqO1SmjJkBKbem5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLtYoXURHZLmZvPthmVxjRzhu0rg91qwOtstRRhXejmVyj020cWACD2zocqZ38kKahh_FJugdRsTMPBtt8VPcQXpgRXNPjBhqtz9Jw9Md8uu&lib=MXoYVWDjXav9p1UuYgY7Olog19xxae7g_"
+  private pagination = {'sortBy': 'No', 'descending': true, 'rowsPerPage': -1}
+  public searchDBurl: string = "https://script.google.com/macros/s/AKfycbyqELM2mm3J58BLXIjxKxIYN64x6iF6I6ctJU_Vdui6gx331Pz5R5FpuL3s-aM8nsgn/exec"
   public searchDB: any = [
     {
         "Title": "都会派",
@@ -153,7 +154,7 @@ export default class SearchEngine extends Vue {
       }).length == words.length)
   }
   private headers: any = [
-    { text: "No", value: "No"},
+    { text: "＃", value: "No"},
     { text: "タイトル", value: "Title",},
     { text: "登場キャラ", value: "Charactors", },
     { text: "キーワード", value: "Keyword", },
