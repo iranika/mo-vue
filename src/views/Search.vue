@@ -1,5 +1,5 @@
 <template>
-  <div style="display:flex; justify-content:center;">
+  <div style="display: flex; justify-content: center">
     <v-card width="90%" max-width="900px" class="ma-4">
       <v-card-title>
         びゅあー検索くん㌁ver0.2
@@ -22,16 +22,11 @@
         pagination.sync="pagination"
         loading="true"
         dense
-        
       >
-        <template
-            v-slot:[`item.No`]="{ item }"
-          >
-            {{ Number(searchDB.map((x)=>{ return x.Title }).indexOf(item.Title) + 1) }}
+        <template v-slot:[`item.No`]="{ item }">
+          {{ Number(item.No) + 1 }}
         </template>
-        <template
-          v-slot:[`item.Charactors`]="{ item }"
-        >
+        <template v-slot:[`item.Charactors`]="{ item }">
           <v-edit-dialog
             :return-value.sync="item.Charactors"
             @save="save"
@@ -50,9 +45,7 @@
             </template>
           </v-edit-dialog>
         </template>
-        <template
-          v-slot:[`item.Keyword`]="{ item }"
-        >
+        <template v-slot:[`item.Keyword`]="{ item }">
           <v-edit-dialog
             :return-value.sync="item.Keyword"
             @save="save"
@@ -71,119 +64,119 @@
             </template>
           </v-edit-dialog>
         </template>
-        <template
-          v-slot:[`item.Comment`]="{ item }"
-        >
+        <template v-slot:[`item.Comment`]="{ item }">
           {{ item.Comment == null ? "-" : item.Comment.toString() }}
         </template>
 
-        <template
-            v-slot:[`item.PageLink`]="{ item }"
+        <template v-slot:[`item.PageLink`]="{ item }">
+          <v-btn
+            :href="getPageLink(item)"
+            target="__blank"
+            small
+            color="white"
+            depressed
           >
-            <v-btn
-              :href="getPageLink(item)"
-              target="__blank"
-              small
-              color="white"
-              depressed
-            >
-              <v-icon>mdi-open-in-new</v-icon>
-            </v-btn>
+            <v-icon>mdi-open-in-new</v-icon>
+          </v-btn>
         </template>
-
       </v-data-table>
     </v-card>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue} from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 //import searchdb from "@/assets/searchdb.json";
 import axios from "axios";
 
-declare global{
-  interface Window { pageData: any }
+declare global {
+  interface Window {
+    pageData: any;
+  }
 }
 
 @Component({})
 export default class SearchEngine extends Vue {
-  private pagination = {'sortBy': 'No', 'descending': true, 'rowsPerPage': -1}
-  public searchDBurl: string = "https://script.google.com/macros/s/AKfycbyqELM2mm3J58BLXIjxKxIYN64x6iF6I6ctJU_Vdui6gx331Pz5R5FpuL3s-aM8nsgn/exec"
+  private pagination = { sortBy: "No", descending: true, rowsPerPage: -1 };
+  public searchDBurl: string = "https://script.google.com/macros/s/AKfycbyqELM2mm3J58BLXIjxKxIYN64x6iF6I6ctJU_Vdui6gx331Pz5R5FpuL3s-aM8nsgn/exec";
   public searchDB: any = [
     {
-        "Title": "都会派",
-        "ImagesUrl": [
-            "https://mo4koma.iranika.info/4koma/ja/1.jpg"
-        ],
-        "Charactors": [
-            "せり",
-            "すずな"
-        ],
-        "Keyword": [
-            "きっぷ"
-        ],
-        "Comment": "きっぷが買えるなんてずなちゃんは都会派だね！"
+      No: "0",
+      Title: "都会派",
+      ImagesUrl: ["https://mo4koma.iranika.info/4koma/ja/1.jpg"],
+      Charactors: ["せり", "すずな"],
+      Keyword: ["きっぷ"],
+      Comment: "きっぷが買えるなんてずなちゃんは都会派だね！",
     },
   ];
   public exDB: any = "";
   public pageData: any = "";
 
-  created(){
+  created() {
     //console.log(this.pageData)
-    axios.get(this.searchDBurl).then(res => {
+    axios.get(this.searchDBurl).then((res) => {
       this.pageData = window.pageData || {};
       this.exDB = res.data;
-      this.searchDB = this.pageData.map((v:any,i: number) => {
-        return Object.assign(v, this.exDB[i][i]);
-      })
+      this.searchDB = this.pageData.map((v: any, i: number) => {
+        return Object.assign(Object.assign(v, { No: i }), this.exDB[i][i]);
+      });
       console.log(this.searchDB);
-    })
-  };
-
+    });
+  }
 
   public search = "";
-  public filter(items: any, search: string){
+  public filter(items: any, search: string) {
     if (items == null || typeof items === "boolean") return false;
-    let words = search.split(/,|、/).map((w: string) => { return w.trim() }).filter(x => x)
-    return (words.filter(w => {
-      if (Array.isArray(items)){
-        return items.filter((x: string) => x.indexOf(w) !== -1).length > 0;
-      }else{
-        return items.indexOf(w) !== -1;
-      }
-      }).length == words.length)
+    let words = search
+      .split(/,|、/)
+      .map((w: string) => {
+        return w.trim();
+      })
+      .filter((x) => x);
+    return (
+      words.filter((w) => {
+        if (Array.isArray(items)) {
+          return items.filter((x: string) => x.indexOf(w) !== -1).length > 0;
+        } else {
+          return items.indexOf(w) !== -1;
+        }
+      }).length == words.length
+    );
   }
   private headers: any = [
-    { text: "＃", value: "No"},
-    { text: "タイトル", value: "Title",},
-    { text: "登場キャラ", value: "Charactors", },
-    { text: "キーワード", value: "Keyword", },
-    { text: "コメント", value: "Comment", },
+    { text: "＃", value: "No" },
+    { text: "タイトル", value: "Title" },
+    { text: "登場キャラ", value: "Charactors" },
+    { text: "キーワード", value: "Keyword" },
+    { text: "コメント", value: "Comment" },
     { text: "Link", value: "PageLink" },
   ];
 
-
   public getPageLink(item: any): string {
-    let pageNum: Number = this.searchDB.map((x: any)=>{ return x.Title }).indexOf(item.Title) + 1
-    return "/?page=" + pageNum
+    let pageNum: Number =
+      this.searchDB
+        .map((x: any) => {
+          return x.Title;
+        })
+        .indexOf(item.Title) + 1;
+    return "#/?page=" + pageNum;
   }
 
   /* */
   public snack = false;
-  public save(){
-    console.log("save is ok")
+  public save() {
+    console.log("save is ok");
   }
-  public cancel(){
-    console.log("cancel is ok")
+  public cancel() {
+    console.log("cancel is ok");
   }
-  public open(){
-    console.log("open is ok")
+  public open() {
+    console.log("open is ok");
   }
-  public close(){
-    console.log("close is ok")
+  public close() {
+    console.log("close is ok");
   }
-
-};
+}
 </script>
 
 <style></style>
