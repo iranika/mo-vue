@@ -2,7 +2,7 @@
   <div style="display: flex; justify-content: center">
     <v-card width="90%" max-width="900px" class="ma-4">
       <v-card-title>
-        びゅあー検索くん㌁ver0.2
+        びゅあー検索くん㌁ver0.3
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
