@@ -1,91 +1,111 @@
 <template>
-  <div style="display: flex; justify-content: center">
-    <v-card width="90%" max-width="900px" class="ma-4">
-      <v-card-title>
-        びゅあー検索くん㌁ver0.4
-        <v-spacer></v-spacer>
-        <v-text-field
-          v-model="search"
-          append-icon="mdi-magnify"
-          label="検索する文字を入力してね"
-          single-line
-          hide-details
-        ></v-text-field>
-      </v-card-title>
-      <v-data-table
-        :headers="headers"
-        :items="searchDB"
-        :search="search"
-        :custom-filter="filter"
-        item-key="No"
-        class="elevation-1"
-        pagination.sync="pagination"
-        loading="true"
-        dense
-      >
-        <template v-slot:[`item.No`]="{ item }">
-          {{ Number(item.No) + 1 }}
-        </template>
-        <template v-slot:[`item.Charactors`]="{ item }">
-          <v-edit-dialog
-            :return-value.sync="item.Charactors"
-            @save="save"
-            @cancel="cancel"
-            @open="open"
-            @close="close"
-          >
-            {{ item.Charactors == null ? "-" : item.Charactors.toString() }}
-            <template v-slot:input>
-              <v-text-field
-                v-model="item.Charactors"
-                label="Edit"
-                single-line
-                counter
-              ></v-text-field>
-            </template>
-          </v-edit-dialog>
-        </template>
-        <template v-slot:[`item.Keyword`]="{ item }">
-          <v-edit-dialog
-            :return-value.sync="item.Keyword"
-            @save="save"
-            @cancel="cancel"
-            @open="open"
-            @close="close"
-          >
-            {{ item.Keyword == null ? "-" : item.Keyword.toString() }}
-            <template v-slot:input>
-              <v-text-field
-                v-model="item.Keyword"
-                label="Edit"
-                single-line
-                counter
-              ></v-text-field>
-            </template>
-          </v-edit-dialog>
-        </template>
-        <template v-slot:[`item.Comment`]="{ item }">
-          {{ item.Comment == null ? "-" : item.Comment.toString() }}
-        </template>
+  <div>
+    <div class="content-center">
+      <v-card width="90%" max-width="900px" class="ma-4">
+        <v-card-title>
+          びゅあー検索くん㌁ver0.5
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="検索する文字を入力してね"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          v-model="selecteds"
+          show-select
+          :headers="headers"
+          :items="searchDB"
+          :search="search"
+          :custom-filter="filter"
+          item-key="No"
+          class="elevation-1"
+          pagination.sync="pagination"
+          loading="true"
+          dense
+        >
+          <template v-slot:[`item.No`]="{ item }">
+            {{ Number(item.No)}}
+          </template>
+          <template v-slot:[`item.Charactors`]="{ item }">
+            <v-edit-dialog
+              :return-value.sync="item.Charactors"
+              @save="save"
+              @cancel="cancel"
+              @open="open"
+              @close="close"
+            >
+              {{ item.Charactors == null ? "-" : item.Charactors.toString() }}
+              <template v-slot:input>
+                <v-text-field
+                  v-model="item.Charactors"
+                  label="Edit"
+                  single-line
+                  counter
+                ></v-text-field>
+              </template>
+            </v-edit-dialog>
+          </template>
+          <template v-slot:[`item.Keyword`]="{ item }">
+            <v-edit-dialog
+              :return-value.sync="item.Keyword"
+              @save="save"
+              @cancel="cancel"
+              @open="open"
+              @close="close"
+            >
+              {{ item.Keyword == null ? "-" : item.Keyword.toString() }}
+              <template v-slot:input>
+                <v-text-field
+                  v-model="item.Keyword"
+                  label="Edit"
+                  single-line
+                  counter
+                ></v-text-field>
+              </template>
+            </v-edit-dialog>
+          </template>
+          <template v-slot:[`item.Comment`]="{ item }">
+            {{ item.Comment == null ? "-" : item.Comment.toString() }}
+          </template>
 
-        <template v-slot:[`item.PageLink`]="{ item }">
-          <v-btn
-            :href="getPageLink(item)"
-            target="__blank"
-            small
-            color="white"
-            depressed
-          >
-            <v-icon>mdi-open-in-new</v-icon>
-          </v-btn>
-        </template>
-      </v-data-table>
-    </v-card>
+          <template v-slot:[`item.PageLink`]="{ item }">
+            <v-btn
+              :href="getPageLink(item)"
+              target="__blank"
+              small
+              color="white"
+              depressed
+            >
+              <v-icon>mdi-open-in-new</v-icon>
+            </v-btn>
+          </template>
+        </v-data-table>
+      </v-card>
+    </div>
+
+    <div class="content-center">
+      <v-switch
+        v-model="isShowViewerContent"
+        label="チェックした話を一覧表示する"
+      ></v-switch>
+    </div>
+
+    <div class="content-center">
+      <viewer-images
+        v-show="isShowViewerContent"
+        v-bind:pageList="selecteds.map(x => x.No - 1)"
+      ></viewer-images>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import ViewerImages from "@/components/ViewerImages.vue";
+//import ViewerContent from "@/components/ViewerContent.vue";
 //import searchdb from "@/assets/searchdb.json";
 import axios from "axios";
 
@@ -95,8 +115,12 @@ declare global {
   }
 }
 
-@Component({})
+@Component({
+  components: { ViewerImages },
+})
 export default class SearchEngine extends Vue {
+  private selecteds = [];
+  private isShowViewerContent = true;
   private pagination = { sortBy: "No", descending: true, rowsPerPage: -1 };
   public searchDBurl: string = "https://script.google.com/macros/s/AKfycbyqELM2mm3J58BLXIjxKxIYN64x6iF6I6ctJU_Vdui6gx331Pz5R5FpuL3s-aM8nsgn/exec";
   public searchDB: any = [
@@ -118,7 +142,7 @@ export default class SearchEngine extends Vue {
       this.pageData = window.pageData || {};
       this.exDB = res.data;
       this.searchDB = this.pageData.map((v: any, i: number) => {
-        return Object.assign(Object.assign(v, { No: i }), this.exDB[i][i]);
+        return Object.assign(Object.assign(v, { No: i + 1 }), this.exDB[i][i]);
       });
       console.log(this.searchDB);
     });
@@ -181,4 +205,11 @@ export default class SearchEngine extends Vue {
 }
 </script>
 
-<style></style>
+<style scoped>
+
+.content-center {
+  display: flex;
+  justify-content: center;
+}
+
+</style>
