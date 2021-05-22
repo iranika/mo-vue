@@ -142,7 +142,18 @@ export default class SearchEngine extends Vue {
       this.pageData = window.pageData || {};
       this.exDB = res.data;
       this.searchDB = this.pageData.map((v: any, i: number) => {
-        return Object.assign(Object.assign(v, { No: i + 1 }), this.exDB[i][i]);
+        if (this.exDB[i]){
+          return Object.assign(Object.assign(v, { No: i + 1 }), this.exDB[i][i]);
+        }else{
+          return Object.assign(Object.assign(v, { No: i + 1 }), {
+            No: i + 1,
+            Title: "",
+            ImagesUrl: [],
+            Charactors: [],
+            Keyword: [],
+            Comment: "※検索DBに情報が追記されていません"
+          })
+        }
       });
       console.log(this.searchDB);
     });
