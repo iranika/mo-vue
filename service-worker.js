@@ -33,5 +33,5 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/https:\/\/mo4koma\.iranika\.info\/4koma\/ja\/.*\.jpg/, new workbox.strategies.CacheFirst({ "cacheName":"mo4koma-images-1-265", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 7776000, purgeOnQuotaError: false })] }), 'GET');
+workbox.routing.registerRoute(/https:\/\/mo4koma\.iranika\.info\/.+\.jpg/, new workbox.strategies.CacheFirst({ "cacheName":"mo4koma-images-1-265", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 7776000, purgeOnQuotaError: false })] }), 'GET');
 workbox.routing.registerRoute(/https:\/\/mo4koma\.iranika\.info\/.+sp\.jpg/, new workbox.strategies.CacheFirst({ "cacheName":"mo4koma-images-sp", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 7776000, purgeOnQuotaError: false }), new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
