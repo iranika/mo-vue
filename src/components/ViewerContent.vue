@@ -23,9 +23,35 @@
           <v-btn rounded x-small v-on:click="scrollTop()" depressed
             >トップに戻る</v-btn
           >
-        </div>
+          <v-btn
+            rounded
+            x-small
+            depressed
+            color="orange"
+            style="color: white"
+            v-if="memos[i] && memos[i] != null"
+            v-on:click="memo=memos[i]; dialog = !dialog"
+            ><v-icon x-small>mdi-book</v-icon>
+            Memo
+          </v-btn>
+        </div> 
+               
       </div>
     </div>
+    <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <v-card>
+          <v-card-title class="text-h5 lighten-2">
+            ひとくちメモ<v-icon >mdi-book</v-icon>
+            <v-spacer></v-spacer>
+            <v-btn text color="primary" v-on:click="dialog = !dialog">とじる</v-btn>
+          </v-card-title>
+          <v-card-text v-html="memo" class="memo-content"></v-card-text>
+        </v-card>
+    </v-dialog>
+
     <div centered style="text-align:center; padding:10px">
       <v-btn
         rounded
@@ -40,8 +66,15 @@
 
 <script>
 import ShareTwitterButton from "../components/ShareTwitterButton.vue";
+//import MemoModal from "../components/MemoModal.vue";
+import axios from "axios";
+
 
 export default {
+  components: {
+    ShareTwitterButton,
+    //MemoModal
+  },
   props: {
     page: {
       type: String,
@@ -52,7 +85,10 @@ export default {
     show: [],
     enableBack: false,
     pages: window.pageData,
-    bottom: false
+    memos: [""],
+    memo: "",
+    bottom: false,
+    dialog: false,
   }),
   methods: {
     bottomVisible() {
@@ -122,14 +158,23 @@ export default {
     window.addEventListener("scroll", this.onScroll);
     this.setShow();
     this.addContent();
+    axios.post("https://script.google.com/macros/s/AKfycbyqELM2mm3J58BLXIjxKxIYN64x6iF6I6ctJU_Vdui6gx331Pz5R5FpuL3s-aM8nsgn/exec").then(
+      (res)=>{
+        if (res.data[0]){
+          this.memos = res.data
+          //console.log("got memos", this.memos);  
+        }
+      }
+    ).catch((e)=>{
+      console.log("cannot get memos.", e);
+    })
   },
   destroyed() {
     window.removeEventListener("scroll", this.onScroll);
-  },
-  components: {
-    ShareTwitterButton
   }
 };
 </script>
 
-<style></style>
+<style scoped>
+
+</style>

@@ -8,6 +8,14 @@
         <v-expansion-panel-content>
           <v-card flat>
             <v-card-text>
+              <h4>6月7日 曇り</h4>
+              各話にひとくちMEMOを実装しました。
+              MEMOがある場合にのみ、オレンジ色のMEMOボタンが表示されます。
+              あと、びゅあー検索くん㌁がひっそりとリリースされました。
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-text>
               <h4>4月7日 曇り</h4>
               左上のサイドメニューに道草恋歌へのリンクを追加しました。
               道草恋歌は道草屋への想いを俳句や短歌で綴るためのアプリです。
