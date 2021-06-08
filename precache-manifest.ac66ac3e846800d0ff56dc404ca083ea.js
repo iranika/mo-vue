@@ -20,12 +20,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/bg.b83c9e78.jpg"
   },
   {
-    "revision": "af26f37f853cb2a132265d62c2265f88",
-    "url": "img/charactor/177-1.jpg"
-  },
-  {
     "revision": "32de28f0473070ebab8b793015d27142",
     "url": "img/charactor/hako-256.jpg"
+  },
+  {
+    "revision": "af26f37f853cb2a132265d62c2265f88",
+    "url": "img/charactor/ine-177.jpg"
   },
   {
     "revision": "f64ae09715b1fe070772c570b44b8bb1",
