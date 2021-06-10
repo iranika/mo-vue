@@ -14,16 +14,12 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.4109714aa9a21e4247c419adf71fc9af.js"
+  "precache-manifest.608ef86d4f1213ec404c8cbb92acd9de.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "mo-vue"});
+workbox.core.skipWaiting();
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
+workbox.core.clientsClaim();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -32,5 +28,3 @@ self.addEventListener('message', (event) => {
  */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
-
-workbox.routing.registerRoute(/https:\/\/mo4koma\.iranika\.info\/.+(sp|top)\.jpg/, new workbox.strategies.CacheFirst({ "cacheName":"mo4koma-images-sp", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 86400, purgeOnQuotaError: true }), new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');

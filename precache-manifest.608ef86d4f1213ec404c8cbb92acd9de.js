@@ -1,0 +1,125 @@
+self.__precacheManifest = (self.__precacheManifest || []).concat([
+  {
+    "revision": "415580830010a1ef3e52d84a0297c3cd",
+    "url": "CNAME"
+  },
+  {
+    "revision": "d61c7b969094843ce6f3",
+    "url": "css/about.c8140e10.css"
+  },
+  {
+    "revision": "295aa3a2b8b7fd9dc6d4",
+    "url": "css/app.fc5630af.css"
+  },
+  {
+    "revision": "947b8993193ba8b8d44e",
+    "url": "css/chunk-vendors.20e8111b.css"
+  },
+  {
+    "revision": "be0ffebc26cfe9c2282ddefa424f4067",
+    "url": "favicon.ico"
+  },
+  {
+    "revision": "b83c9e78acd6aacd934a4a885c988587",
+    "url": "img/bg.b83c9e78.jpg"
+  },
+  {
+    "revision": "32de28f0473070ebab8b793015d27142",
+    "url": "img/charactor/hako-256.jpg"
+  },
+  {
+    "revision": "af26f37f853cb2a132265d62c2265f88",
+    "url": "img/charactor/ine-177.jpg"
+  },
+  {
+    "revision": "f64ae09715b1fe070772c570b44b8bb1",
+    "url": "img/charactor/inoko-251.jpg"
+  },
+  {
+    "revision": "be36c1ebe933245228dcc6577c214f6b",
+    "url": "img/charactor/natuna-250.jpg"
+  },
+  {
+    "revision": "cb9f30a2d79805d1ba89e7b6339b2154",
+    "url": "img/charactor/seri-205-1.jpg"
+  },
+  {
+    "revision": "fe573375aaf4f36db7a5b9387cd58342",
+    "url": "img/charactor/seri-205.jpg"
+  },
+  {
+    "revision": "2e53421f10c4ef49148408d26cdaf0cd",
+    "url": "img/charactor/suzuna-177.jpg"
+  },
+  {
+    "revision": "58bfc62f48c6aaf01ac3cba2e18d7177",
+    "url": "img/charactor/suzusiro-241.jpg"
+  },
+  {
+    "revision": "ff596f8190e2b0fd3315d87d8f949ce7",
+    "url": "img/charactor/tabirako-179.jpg"
+  },
+  {
+    "revision": "36aa04a4af6fa14a98507b12e29a324b",
+    "url": "img/charactor/tabirako-185.jpg"
+  },
+  {
+    "revision": "2304f3134ece8f2c3fddc5a0e1227d31",
+    "url": "img/charactor/tabirako-233.jpg"
+  },
+  {
+    "revision": "40d3de955731ddc6dfe81abbc4b5102c",
+    "url": "img/charactor/tabirako-243.jpg"
+  },
+  {
+    "revision": "ae7c9f318e17bb9a38997e011c4d4dd0",
+    "url": "img/favicon.ico"
+  },
+  {
+    "revision": "444dbb92ae6b8de8cf0d928696a10f43",
+    "url": "img/icons/android-chrome-192x192.png"
+  },
+  {
+    "revision": "0ea1d3d34a2b68e58580a09e71538323",
+    "url": "img/icons/android-chrome-512x512.png"
+  },
+  {
+    "revision": "b33fc7aec9efb20ca740a548abe97f51",
+    "url": "img/icons/favicon-16x16.png"
+  },
+  {
+    "revision": "eb8cbe06145443897af04e310ac9e0bf",
+    "url": "img/icons/favicon-32x32.png"
+  },
+  {
+    "revision": "eadeb2945125ddc95a8714c96b278907",
+    "url": "index.html"
+  },
+  {
+    "revision": "d61c7b969094843ce6f3",
+    "url": "js/about.246330c1.js"
+  },
+  {
+    "revision": "295aa3a2b8b7fd9dc6d4",
+    "url": "js/app.064aeae1.js"
+  },
+  {
+    "revision": "947b8993193ba8b8d44e",
+    "url": "js/chunk-vendors.5467130b.js"
+  },
+  {
+    "revision": "a3f6adeb046dcc7a2ad8934f72387d3b",
+    "url": "manifest.json"
+  },
+  {
+    "url": "precache-manifest.6e7f1c0be1da852257316c6952838b27.js"
+  },
+  {
+    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "url": "robots.txt"
+  },
+  {
+    "revision": "91e2b9e8d7987e8a0797fff63539bf26",
+    "url": "service-worker.js"
+  }
+]);
