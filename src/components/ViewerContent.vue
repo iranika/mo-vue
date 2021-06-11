@@ -79,6 +79,10 @@ export default {
     page: {
       type: String,
       default: "1"
+    },
+    lang:{
+      type: String,
+      default: "ja"
     }
   },
   data: () => ({
@@ -154,6 +158,22 @@ export default {
       this.InitShow();
     }
   },
+  mounted(){
+    //check language.
+    if (this.lang == "en"){
+      axios.get("https://mo4koma.iranika.info/4komaData.en.json").then((res)=>{
+        if (res.data[0]){
+          this.pages = res.data;
+        }
+      });
+    }else if(this.lang == "zh-tw"){
+      axios.get("https://mo4koma.iranika.info/4komaData.zh.json").then((res)=>{
+        if (res.data[0]){
+          this.pages = res.data;
+        }
+      });
+    }
+  },
   created() {
     window.addEventListener("scroll", this.onScroll);
     this.setShow();
@@ -167,7 +187,7 @@ export default {
       }
     ).catch((e)=>{
       console.log("cannot get memos.", e);
-    })
+    });
   },
   destroyed() {
     window.removeEventListener("scroll", this.onScroll);

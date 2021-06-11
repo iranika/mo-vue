@@ -5,9 +5,7 @@
       <v-card-text>
         <div>
           <p>
-            桃鳥さんが描いている「<a href="http://momoirocode.web.fc2.com/"
-              >ばっくやーど数コマ</a
-            >」をスマホで読みやすくするアプリです。
+            桃鳥さんが描いている「<a href="http://momoirocode.web.fc2.com/">ばっくやーど数コマ</a>」をスマホで読みやすくするアプリです。
           </p>
           <p>
             桃鳥さんの許諾を得て、<a href="https://twitter.com/happy_packet"
@@ -19,13 +17,8 @@
             >までお願いします。
           </p>
           <p>
-            漫画の更新情報はTwitterのハッシュタグ『<a
-              href="https://twitter.com/hashtag/%E6%A1%83%E8%89%B2CODE%E6%9B%B4%E6%96%B0%E6%83%85%E5%A0%B1"
-              >#桃色CODE更新情報</a
-            >』でつぶやいています。<a
-              href="https://mo4koma.iranika.info/feed.atom"
-              >RSS/Atom</a
-            >でも配信しています。
+            漫画の更新情報はTwitterのハッシュタグ『<a href="https://twitter.com/hashtag/%E6%A1%83%E8%89%B2CODE%E6%9B%B4%E6%96%B0%E6%83%85%E5%A0%B1">#桃色CODE更新情報</a>』でつぶやいています。
+            <a href="https://mo4koma.iranika.info/feed.atom">RSS/Atom</a>でも配信しています。
           </p>
         </div>
       </v-card-text>

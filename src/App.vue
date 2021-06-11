@@ -19,11 +19,11 @@
       </template>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>みちくさびゅあー</v-toolbar-title>
-      <template v-slot:extension v-show="isTabShow">
+      <template v-slot:extension>
         <v-tabs align-with-title>
           <v-tab to="/">Home</v-tab>
           <v-tab to="/?page=latest">latest</v-tab>
-          <v-tab to="/About">About</v-tab>
+          <v-tab to="/charactor">Charactor</v-tab>
         </v-tabs>
       </template>
       <v-spacer></v-spacer>
@@ -48,6 +48,12 @@
             </v-list-item-icon>
             <v-list-item-title>最新話</v-list-item-title>
           </v-list-item>
+          <v-list-item to="/charactor">
+            <v-list-item-icon>
+              <v-icon dense>mdi-book</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>登場人物の紹介</v-list-item-title>
+          </v-list-item>
           <v-list-item to="/search">
             <v-list-item-icon>
               <v-icon dense>mdi-information</v-icon>
@@ -67,11 +73,10 @@
       <v-list nav dense>
         <v-subheader>外部リンク</v-subheader>
         <v-list-item-group
-          v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
           <v-list-item
-            href="https://www.dlsite.com/home/dlaf/=/aid/iranica/url/https%3A%2F%2Fwww.dlsite.com%2Fmaniax%2Fcircle%2Fprofile%2F%3D%2Fmaker_id%2FRG24350.html%2F%3Futm_medium%3Daffiliate%26utm_campaign%3Dbnlink%26utm_content%3Dtext"
+            href="https://www.dlsite.com/home/dlaf/=/aid/movue/url/https%3A%2F%2Fwww.dlsite.com%2Fmaniax%2Fcircle%2Fprofile%2F%3D%2Fmaker_id%2FRG24350.html%2F%3Futm_medium%3Daffiliate%26utm_campaign%3Dbnlink%26utm_content%3Dtext"
           >
             <v-list-item-icon>
               <v-icon dense>mdi-home</v-icon>
@@ -107,7 +112,6 @@
       <v-list nav dense>
         <v-subheader>いらにかの何か</v-subheader>
         <v-list-item-group
-          v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
           <v-list-item href="https://michikusa-renka.glideapp.io/" target="new">
@@ -127,6 +131,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import TitleListMenu from "./components/TitleListMenu.vue";
 import YoyakuList from "./components/YoyakuList.vue";
 
@@ -143,7 +148,16 @@ export default {
     isTabShow: true,
     pageData: window.pageData,
     goyoyaku: window.goyoyaku
-  })
+  }),
+  mounted(){
+    if (this.$route.params.lang && this.$route.params.lang == "en"){
+      axios.get("https://mo4koma.iranika.info/4komaData.en.json").then((res)=>{
+        if (res.data[0]){
+          this.pageData = res.data;
+        }
+      })
+    }
+  }
 };
 </script>
 

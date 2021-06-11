@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Infomation></Infomation>
-    <ViewerContent :page="page"></ViewerContent>
+    <ViewerContent :page="page" :lang="lang"></ViewerContent>
     <Footer></Footer>
   </div>
 </template>
@@ -15,7 +15,8 @@ import Infomation from "../components/Infomation.vue";
 export default {
   name: "Home",
   props: {
-    page: String
+    page: String,
+    lang: String,
   },
   data: () => ({}),
   components: {

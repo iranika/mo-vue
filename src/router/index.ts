@@ -15,13 +15,27 @@ const routes = [
     })
   },
   {
+    path: "/charactor",
+    redirect: "/charactor/seri"
+  },
+  {
+    path: "/charactor/:name",
+    name: "charactor",
+    props: (route: { params: { name: String; }})=> ({
+      name: route.params.name
+    }),
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ "../views/Charactor.vue")
+  },
+  {
     path: "/about",
     name: "about",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    component: () => import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
     path: "/search",
@@ -30,6 +44,15 @@ const routes = [
     props: (route: { query: { page: any; }; }) => ({
       page: route.query.page
     })
+  },
+  {
+    path: "/:lang/",
+    component: Home,
+    props: (route: { params: { lang: String; }, query: { page: any; }})=> ({
+      page: route.query.page,
+      lang: route.params.lang
+    }),
+
   }
 ];
 
