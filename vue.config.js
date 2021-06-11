@@ -17,7 +17,8 @@ module.exports = {
         "CNAME",
         /chunk-vendors.*.css.map/,
         /about.*.css.map/,
-        /app.*.css.map/
+        /app.*.css.map/,
+        /chunk.*.css.map/
       ],
       runtimeCaching: [
         /*{

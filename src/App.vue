@@ -60,7 +60,12 @@
             </v-list-item-icon>
             <v-list-item-title>びゅあー検索くんα</v-list-item-title>
           </v-list-item>
-
+          <v-list-item to="/products">
+            <v-list-item-icon>
+              <v-icon dense>mdi-book</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>道草屋の作品一覧</v-list-item-title>
+          </v-list-item>
           <v-list-item to="/About">
             <v-list-item-icon>
               <v-icon dense>mdi-information</v-icon>
@@ -83,18 +88,39 @@
             </v-list-item-icon>
             <v-list-item-title>DLsiteのページ</v-list-item-title>
           </v-list-item>
+
+          <v-list-item
+            href="https://www.dlsite.com/home/dlaf/=/aid/movue/url/https%3A%2F%2Fwww.dlsite.com%2Fmaniax%2Fcircle%2Fprofile%2F%3D%2Fmaker_id%2FRG24350.html%2F%3Futm_medium%3Daffiliate%26utm_campaign%3Dbnlink%26utm_content%3Dtext"
+          >
+            <v-list-item-icon>
+              <v-icon dense>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>BOOTHのページ</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item
+            href="https://momotori.booth.pm/item_lists/rBkTe4Bm"
+          >
+            <v-list-item-icon>
+              <v-icon dense>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>お土産売り場(booth)</v-list-item-title>
+          </v-list-item>
+          
           <v-list-item href="http://momoirocode.web.fc2.com/">
             <v-list-item-icon>
               <v-icon dense>mdi-home</v-icon>
             </v-list-item-icon>
             <v-list-item-title>桃色CODE</v-list-item-title>
           </v-list-item>
+
           <v-list-item href="http://blog.livedoor.jp/kai_tyou/">
             <v-list-item-icon>
               <v-icon dense>mdi-home</v-icon>
             </v-list-item-icon>
             <v-list-item-title>雑記的な（ブログ）</v-list-item-title>
           </v-list-item>
+
           <v-expansion-panels flat>
             <v-expansion-panel>
               <v-expansion-panel-header

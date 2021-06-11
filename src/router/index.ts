@@ -46,6 +46,11 @@ const routes = [
     })
   },
   {
+    path: "/products",
+    name: "products",
+    component: ()=> import("../views/Products.vue"),
+  },
+  {
     path: "/:lang/",
     component: Home,
     props: (route: { params: { lang: String; }, query: { page: any; }})=> ({
