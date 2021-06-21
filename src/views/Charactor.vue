@@ -62,9 +62,37 @@
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
-        </v-card>
+        </v-card>        
       </div>
-
+      <!-- 隠し要素 -->
+      <v-card flat max-width="100%" v-if="name == 'tubakiti' || name == 'tsubakichi'">
+        <v-card-title>つば吉</v-card-title>
+        <v-card-subtitle>CV:つば吉（本物）</v-card-subtitle>
+        <v-card-text style="white-space:pre-wrap;">
+          <p>可愛い可愛い燕の子。雛だった頃に巣から落ちて骨折していたところをたびらこさんに拾われる。</p>
+          <p>たびらこお母さんとせりお祖母ちゃんetc...から沢山の愛と餌をもらってスクスクと育ち、無事に巣立っていった。</p>
+          <p>つば吉が帰省してきても問題無いように、つば吉と書かれた紙製の巣箱が道草屋の軒下に作られた（せりお祖母ちゃん作）。</p>
+          <p>それから一年が経ち、嫁を連れて帰省したつば吉（推定）は、せりお祖母ちゃんが用意した部屋で子育てを始めて立派なお父さんになりましたとさ。</p>
+          <p>※つば吉（推定）は、はこお爺さんによってつば吉であることが証明されました。</p>
+        </v-card-text>
+        <v-expansion-panels flat width="100%">
+          <v-expansion-panel style="background-color:#f7f7f7;">
+            <v-expansion-panel-header>
+              <div class="text-center">関連作品</div>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <p>クリックすると作品ページに飛べます</p>
+            </v-expansion-panel-content>
+            <v-expansion-panel-content style="mergin-bottom:4px;" width="100%">
+              <div class="panel">
+                <v-btn to="/?page=213">213.決意</v-btn>
+                <v-btn to="/?page=219">219.つば吉</v-btn>
+                <v-btn to="/?page=239">239.証明</v-btn>                
+              </div>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-card>
     </v-card>
     <Footer></Footer>
   </div>
@@ -181,7 +209,6 @@ export default {
       const self = this;
       return function(cvArray, prodType="mainAct"){
         let charaProducts = self.products.filter(v => cvArray.some(cv => v[prodType].includes(cv)))
-        console.log("charaProducts", charaProducts)
         return charaProducts.map(v => v.banner)
       }
     }

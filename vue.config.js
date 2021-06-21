@@ -13,12 +13,17 @@ module.exports = {
     appleMobileWebAppStatusBarStyle: "default",
     workboxPluginMode: "GenerateSW",
     workboxOptions: {
+      skipWaiting: true,
       exclude: [
         "CNAME",
         /chunk-vendors.*.css.map/,
         /about.*.css.map/,
         /app.*.css.map/,
-        /chunk.*.css.map/
+        /app.*.js/,
+        /app.*.js.map/,
+        /chunk-.*.css.map/,
+        /chunk-.*.js/,
+        /chunk-.*.js.map/
       ],
       runtimeCaching: [
         /*{

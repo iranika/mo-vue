@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="content-center">
-      <v-card width="90%" max-width="900px" class="ma-4">
+      <v-card width="98%" max-width="900px" class="ma-4">
         <v-card-title>
-          道草屋の作品DB
+          道草屋の作品情報
           <v-spacer></v-spacer>
           <v-switch v-model="showActor" label="声優表示"></v-switch>
           <v-spacer></v-spacer>
@@ -18,7 +18,7 @@
         <v-card-subtitle>
           ※出演は声優名でのみフィルタできます。<br>
           ※BOOTHのリンクは作品名で検索しているだけなので精度はご容赦ください。<br>
-          ※WIP:豆知識には作中の重要情報を追加する予定です（追加しない可能性もあります）
+          ※WIP:豆知識には作中の重要情報を追加する予定です（ネタバレ情報は追加しない可能性が高いです）。<br>
         </v-card-subtitle>
         <v-data-table
           v-model="selecteds"
@@ -58,17 +58,39 @@
               depressed
             >DLSITE
             </v-btn>
-
           </template>
         </v-data-table>
       </v-card>
     </div>
+    <div class="content-center">
+      <v-switch
+        v-model="showBannerAll"
+        label="ジャケットを一覧表示する"
+      ></v-switch>
+    </div>
+
+    <div style="width:98%; max-width: 980px; text-align:center; margin:0 auto;">
+      <v-container
+        justify-center
+        v-if="showBannerAll"
+      >
+        <div
+          style="display:inline; justify:center; margin-right:5px;"
+          v-for="(product, i) in productDB"
+          :key="i"
+        >
+          <div class="banner" style="display:inline;" v-html="productDB[i].banner"></div>
+        </div>
+      </v-container>
+    </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
+import Footer from "../components/Footer.vue";
 
 interface productInfo {
   No: Number,
@@ -96,10 +118,11 @@ class productInfo implements productInfo{
 }
 
 @Component({
-  components: { },
+  components: { Footer },
 })
 export default class Products extends Vue {
   private selecteds = [];
+  private showBannerAll = false;
   private showActor = false;
   public productDBurl: string = "https://script.google.com/macros/s/AKfycbzXYMhKrkOm3NtwqeQMBOJYc4uTz8kIbKMYOAdP0cb_lHB1BhTG8B9yc1CTyDAe_drT/exec";
   public productDB: Array<productInfo> = new Array(new productInfo());
@@ -180,11 +203,22 @@ export default class Products extends Vue {
 }
 </script>
 
-<style scoped>
+<style>
 
 .content-center {
   display: flex;
   justify-content: center;
+}
+
+.carousel a img{
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+}
+
+.banner a img{
+  width: 100%;
+  max-width: 300px;
 }
 
 </style>
