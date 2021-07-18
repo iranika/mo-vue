@@ -14,12 +14,16 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.c3b987c2442e0dd75f53b43179aad312.js"
+  "precache-manifest.3587b5061d856f6092b2c11aa477ec6d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "mo-vue"});
 
-workbox.core.skipWaiting();
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
