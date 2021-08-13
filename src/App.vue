@@ -72,6 +72,12 @@
             </v-list-item-icon>
             <v-list-item-title>このアプリについて</v-list-item-title>
           </v-list-item>
+          <v-list-item to="/mypage">
+            <v-list-item-icon>
+              <v-icon dense>mdi-information</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>マイページ</v-list-item-title>
+          </v-list-item>
           <v-spacer></v-spacer>
         </v-list-item-group>
       </v-list>
@@ -146,6 +152,12 @@
             </v-list-item-icon>
             <v-list-item-title>道草恋歌</v-list-item-title>
           </v-list-item>
+          <v-list-item href="https://stamp.iranika.info/#/" target="new">
+            <v-list-item-icon>
+              <v-icon dense>mdi-apps</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Nikaスタンプβ</v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -153,6 +165,12 @@
     <v-main class="bg">
       <router-view> </router-view>
     </v-main>
+    <v-snackbar bottom right :value="updateExists" :timeout="-1">
+      アップデートがあります
+      <v-btn text @click="refreshApp">
+        更新する
+      </v-btn>
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -160,6 +178,7 @@
 import axios from 'axios';
 import TitleListMenu from "./components/TitleListMenu.vue";
 import YoyakuList from "./components/YoyakuList.vue";
+import Update from "@/mixins/update";
 
 export default {
   name: "App",
@@ -183,7 +202,8 @@ export default {
         }
       })
     }
-  }
+  },
+  mixins:[Update],
 };
 </script>
 

@@ -3,9 +3,42 @@
     <v-expansion-panels flat>
       <v-expansion-panel style="background-color:#f7f7f7;">
         <v-expansion-panel-header>
-          <div class="text-center">お知らせ情報＠2021-04-07</div>
+          <div class="text-center">お知らせ情報＠2021-08-09</div>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
+          <v-card flat>
+            <v-card-text>
+              <h4>8月09日 晴れ</h4>
+              作品情報一覧ページにブックマーク機能を追加しました。<br>
+              →<a href="#/products">道草屋の作品一覧</a><br>
+              ログインボタンからTwitter認証するとLink欄のBOOTH,DLSITEそれぞれの横に☆のチェックボックスが表示されます。<br>
+              どこで買ったかメモするのに役立つかも。好きに使ってください。<br>
+              需要があれば購入作品一覧のマイページも作ろうかなとか思いました（思っただけ）<br>
+              08/10追記→マイページ作りました。
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-text>
+              <h4>7月18日 晴れ</h4>
+              関東は梅雨が明けました。<br>
+              道草屋では新しい予約電話が公開されましたね。<br>
+              びゅあーは色々と機能を追加しました。<br>
+              <ol>
+                <li>
+                  左メニューにキャラクター紹介ページが追加されました。
+                </li>
+                <li>
+                  左メニューに道草屋の作品一覧ページを追加しました。登場声優さん等で検索できるちょっと便利なやつです。
+                </li>
+                <li>
+                  左メニューにNikaスタンプのリンクを追加しました。
+                </li>
+                <li>
+                  アプリの更新があるときに更新ボタンが表示されるようになりました。
+                </li>
+              </ol>
+            </v-card-text>
+          </v-card>
           <v-card flat>
             <v-card-text>
               <h4>6月7日 曇り</h4>

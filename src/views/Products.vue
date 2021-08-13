@@ -7,6 +7,31 @@
           <v-spacer></v-spacer>
           <v-switch v-model="showActor" label="声優表示"></v-switch>
           <v-spacer></v-spacer>
+          <div v-if="authstore.user.isLogin">
+            <v-menu offset-y>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  color="primary"
+                  icon
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <v-avatar>
+                    <img :src="authstore.user.photoUrl" />
+                  </v-avatar>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item>
+                  <v-list-item-title @click="signOut()">ログアウト</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
+          <div v-else>
+            <v-btn color="light-blue" @click="signIn()">ログイン<v-icon>mdi-twitter</v-icon></v-btn>
+          </div>
+          <v-spacer></v-spacer>
           <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
@@ -18,12 +43,11 @@
         <v-card-subtitle>
           ※出演は声優名でのみフィルタできます。<br>
           ※BOOTHのリンクは作品名で検索しているだけなので精度はご容赦ください。<br>
-          ※WIP:豆知識には作中の重要情報を追加する予定です（ネタバレ情報は追加しない可能性が高いです）。<br>
         </v-card-subtitle>
         <v-data-table
           v-model="selecteds"
           :headers="headers"
-          :items="productDB"
+          :items="db.products"
           :search="search"
           :custom-filter="filter"
           item-key="No"
@@ -42,22 +66,32 @@
             {{ showActor ? item.subAct.join(",") : toCharactor(item.subAct).join(",") }}
           </template>
           <template v-slot:[`item.link`]="{ item }">
-            <v-btn
-              :href="getBoothLink(item.title)"
-              target="__blank"
-              x-small
-              color="red"
-              depressed
-            >BOOTH
-            </v-btn>
-            <v-btn
-              :href="getBoothLink(item.title)"
-              target="__blank"
-              x-small
-              color="primary"
-              depressed
-            >DLSITE
-            </v-btn>
+            <div class="linkbox">
+              <v-btn
+                :href="getBoothLink(item.title)"
+                target="__blank"
+                x-small
+                color="red"
+                depressed
+              >BOOTH
+              </v-btn>
+              <v-btn icon v-if="authstore.user.isLogin" :color="isBought(item.No, 'booth') ? 'yellow' : 'gray'" @click="clickStar(item.No, 'booth')">
+                <v-icon>mdi-star</v-icon>
+              </v-btn>
+            </div>
+            <div class="linkbox">
+              <v-btn
+                :href="item.dalf"
+                target="__blank"
+                x-small
+                color="primary"
+                depressed
+              >DLSITE
+              </v-btn>
+              <v-btn icon v-if="authstore.user.isLogin" :color="isBought(item.No, 'dlsite') ? 'yellow' : 'gray'" @click="clickStar(item.No, 'dlsite')">
+                <v-icon>mdi-star</v-icon>
+              </v-btn>
+            </div>
           </template>
         </v-data-table>
       </v-card>
@@ -76,10 +110,10 @@
       >
         <div
           style="display:inline; justify:center; margin-right:5px;"
-          v-for="(product, i) in productDB"
+          v-for="(product, i) in db.products"
           :key="i"
         >
-          <div class="banner" style="display:inline;" v-html="productDB[i].banner"></div>
+          <div class="banner" style="display:inline;" v-html="db.products[i].banner"></div>
         </div>
       </v-container>
     </div>
@@ -89,43 +123,20 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import axios from "axios";
 import Footer from "../components/Footer.vue";
-
-interface productInfo {
-  No: Number,
-  title: String,
-  release: Date,
-  mainAct: Array<String>,
-  subAct: Array<String>,
-  link: String,
-  dalf: String,
-  banner: String,
-  hints: Array<String>
-}
-
-class productInfo implements productInfo{
-  constructor(No = -1, title = "",mainAct=[""], subAct=[""], link="", dalf="", banner="", hints=[""],){
-    this.No = No;
-    this.title = title;
-    this.mainAct = mainAct;
-    this.subAct = subAct;
-    this.link = link;
-    this.dalf = dalf;
-    this.banner = banner;
-    this.hints = hints;
-  }
-}
+import { AuthStore } from "@/stores/auth";
+import { ProductsStore } from "@/stores/products";
 
 @Component({
   components: { Footer },
 })
 export default class Products extends Vue {
+  public authstore = AuthStore.getInstance();
   private selecteds = [];
+  private movue = AuthStore.getInstance().movue;
   private showBannerAll = false;
   private showActor = false;
-  public productDBurl: string = "https://script.google.com/macros/s/AKfycbzXYMhKrkOm3NtwqeQMBOJYc4uTz8kIbKMYOAdP0cb_lHB1BhTG8B9yc1CTyDAe_drT/exec";
-  public productDB: Array<productInfo> = new Array(new productInfo());
+  private db = ProductsStore.getInstance().db;
   private headers: any = [
     { text: "＃", value: "No" },
     { text: "リリース日", value: "release" },
@@ -133,16 +144,27 @@ export default class Products extends Vue {
     { text: "メイン出演", value: "mainAct" },
     { text: "サブ出演", value: "subAct" },
     { text: "Link", value: "link" },
-    { text: "豆知識", value: "hints" },
   ];
   public exDB: any = "";
   public pageData: any = "";
 
-  created() {
-    //console.log(this.pageData)
-    axios.get<Array<productInfo>>(this.productDBurl).then((res) => {
-      this.productDB = res.data;
-    });
+  public isBought(itemNo:number, site:any){
+    let possessionId = itemNo + "-" + site;
+    if (this.movue.users.possessions != undefined) return this.movue.users.possessions.includes(possessionId);
+  }
+
+  public clickStar(itemNo:number, site:any){
+    const possessionId = itemNo + "-" + site;
+    const index = this.movue.users.possessions?.indexOf(possessionId)
+    console.log("index",index)
+    console.log("click possession", this.movue.users.possessions)
+    if (index == -1){
+      this.authstore.setPossessionStar(possessionId);
+      console.log("setPossession", possessionId)
+    }else{
+      if (index != undefined) this.authstore.removePossessionStar(index);
+      console.log("removePossession", possessionId)
+    }
   }
 
   public search = "";
@@ -186,6 +208,14 @@ export default class Products extends Vue {
     return link;
   }
 
+
+  public signIn(){
+    this.authstore.signin();
+  }
+  public signOut(){
+    this.authstore.signout();
+  }
+
   /* */
   public snack = false;
   public save() {
@@ -219,6 +249,13 @@ export default class Products extends Vue {
 .banner a img{
   width: 100%;
   max-width: 300px;
+}
+
+.linkbox{
+  display: flex;
+  justify-content: center; /*左右中央揃え*/
+  align-items: center;     /*上下中央揃え*/
+  margin: 0px;
 }
 
 </style>

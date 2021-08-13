@@ -51,6 +51,11 @@ const routes = [
     component: ()=> import("../views/Products.vue"),
   },
   {
+    path: "/mypage",
+    name: "mypage",
+    component: ()=> import("../views/Mypage.vue"),
+  },
+  {
     path: "/:lang/",
     component: Home,
     props: (route: { params: { lang: String; }, query: { page: any; }})=> ({
