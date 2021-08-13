@@ -16,6 +16,7 @@ module.exports = {
       //skipWaiting: true,
       exclude: [
         "CNAME",
+        /index.html.*/,
         /chunk-vendors.*.css.map/,
         /about.*.css.map/,
         /app.*.css.map/,
