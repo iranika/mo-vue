@@ -43,53 +43,50 @@
         <v-card-subtitle>
           ※編集モードを有効にするとブックマークの編集が出来ます。<br />
           ※ブックマークした販売サイトのボタンは色が付きます。<br />
+          ※販売サイトのボタンをクリックすると作品ページが開きます。<br />
           ※BOOTHのリンクは作品名で検索しているだけなので精度はご容赦ください。<br />
         </v-card-subtitle>
 
       </v-card>
     </div>
     <v-container
-      justify-center
+      class="d-flex flex-wrap justify-center"
       v-if="authstore.user.isLogin"
+      width="98%"
     >
-      <v-row justify="center" align-content="center" dense>
-        <v-col
-          style="display: inline; justify: center; margin-right: 5px"
-          v-for="(product, i) in db.products"
-          :key="i"
-          cols="7" xs="2" sm="3" md="2" lg="2" xl="2"
-          dense
-          v-show="isFilter(db.products[i].title)"
-        >
-          
-          <div class="banner" style="display: inline">
-            <v-card width="200px">
-              <v-img :src="db.products[i].img"></v-img>
-              <v-card-title class="text-caption">{{ db.products[i].title }}</v-card-title>
-              <v-card-actions v-if="!isEditerMode">
-                <v-btn
-                  x-small
-                  :color="isBought(i+1,'booth') ? 'red' : 'gray'"
-                  :href="getBoothLink(db.products[i].title)"
-                >BOOTH</v-btn>
-                <v-btn
-                  x-small
-                  :color="isBought(i+1, 'dlsite') ? 'primary' : 'gray'"
-                  :href="db.products[i].dalf"
-                >DLSITE</v-btn>
-              </v-card-actions>
-              <v-card-actions v-else>
-                <v-btn x-small text @click="clickStar(i+1, 'booth')">
-                  <v-icon :color="isBought(i+1, 'booth') ? 'yellow' : 'gray'" >mdi-star</v-icon>BOOTH
-                </v-btn>
-                <v-btn x-small text @click="clickStar(i+1, 'dlsite')">
-                  <v-icon :color="isBought(i+1, 'dlsite') ? 'yellow' : 'gray'">mdi-star</v-icon>DLSITE
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </div>
-        </v-col>
-      </v-row>
+      <v-card
+        width="50%"
+        max-width="200px"
+        v-for="(product, i) in db.products"
+        :key="i"
+        v-show="isFilter(db.products[i].title)"
+        style="padding-bottom: 26px;"        
+      >
+        <v-img :src="db.products[i].img"></v-img>
+        <v-card-title class="text-caption">{{ db.products[i].title }}</v-card-title>
+        <v-card-actions v-if="!isEditerMode" style="position: absolute; bottom: 0;">
+          <v-btn
+            x-small
+            :color="isBought(i+1,'booth') ? 'red' : 'gray'"
+            :href="getBoothLink(db.products[i].title)"
+            target="_blank"
+          >BOOTH</v-btn>
+          <v-btn
+            x-small
+            :color="isBought(i+1, 'dlsite') ? 'primary' : 'gray'"
+            :href="db.products[i].dalf"
+            target="_blank"
+          >DLSITE</v-btn>
+        </v-card-actions>
+        <v-card-actions v-else>
+          <v-btn x-small text @click="clickStar(i+1, 'booth')">
+            <v-icon :color="isBought(i+1, 'booth') ? 'yellow' : 'gray'" >mdi-star</v-icon>BOOTH
+          </v-btn>
+          <v-btn x-small text @click="clickStar(i+1, 'dlsite')">
+            <v-icon :color="isBought(i+1, 'dlsite') ? 'yellow' : 'gray'">mdi-star</v-icon>DLSITE
+          </v-btn>
+        </v-card-actions>
+      </v-card>
     </v-container>
     <v-container v-else justify-center>
       <v-card style="margin: 0 auto; text-align:center;" width="98%" max-width="900px">
