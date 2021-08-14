@@ -39,8 +39,8 @@
           <li>
             URLで指定話数にジャンプできます。数字の代わりにlatestと記載すると最新話にジャンプできます。こいつのおかげで、好きな話数をシェアできる！！
           </li>
-          http://192.168.68.109:8080/#/?page=100<br />
-          http://192.168.68.109:8080/#/?page=latest<br />
+          https://movue.iranika.info/#/?page=100<br />
+          https://movue.iranika.info/#/?page=latest<br />
           <li>PWAに対応しているのでアプリのようにインストールできます。</li>
         </ol>
       </v-card-text>

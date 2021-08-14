@@ -1,6 +1,7 @@
 <template>
   <v-footer padless style="padding-top: 10px;">
     <v-card-text class="pt-0 text-center">
+      <br>
       <p>
         画像等の著作権は桃鳥さんにあり、アプリの著作権はいらにかにあります。<br>
         アプリに関するお問い合わせは<a href="https://twitter.com/happy_packet">いらにか(twitter)</a>までお願いします。
@@ -20,12 +21,12 @@
 </template>
 
 <script>
-//import Osusume from "./Osusume.vue";
+import Osusume from "./Osusume.vue";
 import { Component, Vue } from "vue-property-decorator";
 
 
 @Component({
-  components: { },
+  components: { Osusume },
 })
 export default class Products extends Vue {
 

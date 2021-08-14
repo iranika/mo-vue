@@ -3,9 +3,30 @@
     <v-expansion-panels flat>
       <v-expansion-panel style="background-color:#f7f7f7;">
         <v-expansion-panel-header>
-          <div class="text-center">お知らせ情報＠2021-08-09</div>
+          <div class="text-center">お知らせ情報＠2021-08-13</div>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
+          <v-card flat>
+            <v-card-text>
+              <h4>8月13日 なぞ</h4>
+              フッターに今週のおすすめ作品の掲載をはじめました。<br>
+              飽きるまではオススメ作品のピックアップでもしようと思います。<br>
+              他にも色々と改善したりしました。webpがイチオシの改善ポイントです。<br>
+              <ol>
+                <li>
+                  数こまの画像をjpgからwebpに変更しました。画像の読み込みが大幅に改善されると思います。
+                </li>
+                <li>
+                  マイページのデザインを修正しました。スマホでも見やすくなったと思います。
+                </li>
+                <li>
+                  アップデートの際に削除された古いjsが、ブラウザ側がキャッシュしていたindex.htmlによって呼ばれることで画面が真っ白のままになるトラブルを検知しました。<br>
+                  対策は検討評価中ですが、とりあえずindex.htmlのキャッシュを除外しました。これで完全に治るのかは経過観察になります。<br>
+                  もし、発生した場合はキャッシュをクリアするかページを閉じることで事象が改善されます。<br>
+                </li>
+              </ol>
+            </v-card-text>
+          </v-card>
           <v-card flat>
             <v-card-text>
               <h4>8月09日 晴れ</h4>
