@@ -19,7 +19,7 @@
     ],
     "typeRoots": [
       "./node_modules/@types",
-      "./node_modules/vuetify/types",
+      "./node_modules/vuetify/types"
     ],
     "paths": {
       "@/*": [
@@ -38,8 +38,10 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
-,   "src/main.ts", "src/router/index.ts"],
+    "tests/**/*.tsx",
+    "src/main.ts",
+    "src/router/index.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
