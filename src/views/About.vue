@@ -39,24 +39,10 @@
           <li>
             URLで指定話数にジャンプできます。数字の代わりにlatestと記載すると最新話にジャンプできます。こいつのおかげで、好きな話数をシェアできる！！
           </li>
-          https://movue.iranika.info/#/?page=100<br />
-          https://movue.iranika.info/#/?page=latest<br />
+          http://192.168.68.109:8080/#/?page=100<br />
+          http://192.168.68.109:8080/#/?page=latest<br />
           <li>PWAに対応しているのでアプリのようにインストールできます。</li>
         </ol>
-      </v-card-text>
-      <v-divider></v-divider>
-      <v-card-title>ちょっとしたツール</v-card-title>
-      <v-card-title>DLsiteで購入済みの作品ページから直接ギフトページを開くブックマークレット</v-card-title>
-      <v-card-text>
-          このリンクをブックマークバーにドラッグ&ドロップしてお使いください↓<br>
-          <a href='javascript:(function(e){window.location.href="https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/";})(encodeURIComponent);'>現在のタブで開くやつ</a><br>
-          ドラッグアンドドロップできないブラウザは、以下のURLをブックマークバーに登録してください。<br>
-          <pre style="overflow: auto;">javascript:(function(e){window.location.href="https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/";})(encodeURIComponent);</pre>
-          新規ウィンドウで開きたい場合は↓<br>
-          <a href='javascript:(function(e){window.open("https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/",null,"width=520,height=500");})(encodeURIComponent);'>新規Windowで開くやつ</a><br>
-          ドラッグアンドドロップできないブラウザは、以下のURLをブックマークバーに登録してください。<br>
-          <pre style="overflow: auto;">javascript:(function(e){window.open("https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/",null,"width=520,height=500");})(encodeURIComponent);</pre>
-          
       </v-card-text>
     </v-card>
     <Footer></Footer>

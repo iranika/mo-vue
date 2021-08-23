@@ -91,8 +91,7 @@ export class AuthStore {
     public updateUser(user: UserProfile){
         firebase.auth().currentUser?.updateProfile(user).then(()=>{
             this.setUser(firebase.auth().currentUser)
-            console.log("UpdateUserInfo");
-            //console.log("UpdateUserInfo",this.user);
+            console.log("UpdateUserInfo",this.user);
         })
     }
 
