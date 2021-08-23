@@ -11,7 +11,7 @@
       <img
         v-for="(_, j) in pages[i].ImagesUrl"
         :key="j"
-        :src="pages[i].ImagesUrl[j].replace('/ja/','/ja/webp/').replace('.jpg','.webp')"
+        :src="pages[i].ImagesUrl[j].replace('.jpg','.webp')"
         alt=""
         width="100%"
       />
