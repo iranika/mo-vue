@@ -166,7 +166,7 @@
       <router-view> </router-view>
     </v-main>
     <v-snackbar bottom right :value="updateExists" :timeout="-1">
-      アップデートがあります
+      びゅあーのアップデートがあります
       <v-btn text @click="refreshApp">
         更新する
       </v-btn>

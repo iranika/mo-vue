@@ -56,6 +56,12 @@ const routes = [
     component: ()=> import("../views/Mypage.vue"),
   },
   {
+    path: "/dlsite",
+    name: "dlsite",
+    component: ()=> import("../views/DLsiteProducts.vue"),
+  },
+
+  {
     path: "/:lang/",
     component: Home,
     props: (route: { params: { lang: String; }, query: { page: any; }})=> ({
