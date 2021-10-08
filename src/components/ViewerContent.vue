@@ -87,7 +87,6 @@ export default {
   },
   data: () => ({
     show: [],
-    enableBack: false,
     pages: window.pageData,
     memos: [""],
     memo: "",
