@@ -15,6 +15,11 @@ const routes = [
     })
   },
   {
+    path: "/timeline",
+    name: "timeline",
+    component: () => import("../views/Timeline.vue")
+  },
+  {
     path: "/charactor",
     redirect: "/charactor/seri"
   },

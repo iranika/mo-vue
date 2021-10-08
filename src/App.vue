@@ -66,6 +66,12 @@
             </v-list-item-icon>
             <v-list-item-title>道草屋の作品一覧</v-list-item-title>
           </v-list-item>
+          <v-list-item to="/timeline">
+            <v-list-item-icon>
+              <v-icon dense>mdi-book</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>タイムライン</v-list-item-title>
+          </v-list-item>
           <v-list-item to="/About">
             <v-list-item-icon>
               <v-icon dense>mdi-information</v-icon>
