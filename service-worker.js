@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.7efa363396670e7e7c020f8447feed68.js"
+  "precache-manifest.cf6e3111c290fbfbf627ccaa0761d9a9.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "mo-vue"});
@@ -33,4 +33,4 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/https:\/\/mo4koma\.iranika\.info\/.+(sp|top)\.jpg/, new workbox.strategies.CacheFirst({ "cacheName":"mo4koma-images-sp", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 86400, purgeOnQuotaError: true }), new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
+workbox.routing.registerRoute(/https:\/\/mo4koma\.iranika\.info\/.+(sp|top)\.(jp|webp)/, new workbox.strategies.CacheFirst({ "cacheName":"mo4koma-images-sp", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 86400, purgeOnQuotaError: true }), new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
