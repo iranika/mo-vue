@@ -61,11 +61,17 @@ const routes = [
     component: ()=> import("../views/Mypage.vue"),
   },
   {
+    path: "/renka",
+    name: "renka",
+    component: ()=> import("../views/MichikusaRenka.vue"),
+  },
+  /*
+  {
     path: "/dlsite",
     name: "dlsite",
     component: ()=> import("../views/DLsiteProducts.vue"),
   },
-
+  */
   {
     path: "/:lang/",
     component: Home,
