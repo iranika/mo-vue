@@ -42,19 +42,20 @@ module.exports = {
           }
         },//*/
         {
-          urlPattern: /https:\/\/mo4koma\.iranika\.info\/.+(sp|top)\.jpg/,
-          handler: 'cacheFirst',
+          urlPattern: /https:\/\/mo4koma\.iranika\.info\/.+(sp|top)\.(jp|webp)/,
+          handler: "CacheFirst",
           options:{
-            cacheName: 'mo4koma-images-sp',
+            cacheName: "mo4koma-images-sp",
             expiration: {
               maxAgeSeconds: 60 * 60 * 24 * 1,
               purgeOnQuotaError: true
             },
             cacheableResponse: {
-              statuses: [0,200]
+              statuses: [0, 200]
             }
           }
-        }/*
+        }
+        /*
         {
           urlPattern: /https:\/\/mo4koma\.iranika\.info\/.+\.jpg/,
           handler: 'networkFirst',

@@ -4,7 +4,7 @@
       app
       color="light-green"
       dark
-      src="https://mo4koma.iranika.info/top/top.jpg"
+      src="https://mo4koma.iranika.info/top/top.webp"
       shrink-on-scroll
       prominent
       dense
@@ -27,7 +27,7 @@
         </v-tabs>
       </template>
       <v-spacer></v-spacer>
-      <title-list-menu v-bind:items="pageData"></title-list-menu>
+      <title-list-menu v-bind:titles="pageData.map(p => p.Title)"></title-list-menu>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
@@ -53,6 +53,12 @@
               <v-icon dense>mdi-book</v-icon>
             </v-list-item-icon>
             <v-list-item-title>登場人物の紹介</v-list-item-title>
+          </v-list-item>
+          <v-list-item to="/renka">
+            <v-list-item-icon>
+              <v-icon dense>mdi-apps</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>道草恋歌(閲覧専用)</v-list-item-title>
           </v-list-item>
           <v-list-item to="/search">
             <v-list-item-icon>

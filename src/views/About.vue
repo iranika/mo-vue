@@ -48,15 +48,14 @@
       <v-card-title>ちょっとしたツール</v-card-title>
       <v-card-title>DLsiteで購入済みの作品ページから直接ギフトページを開くブックマークレット</v-card-title>
       <v-card-text>
-          このリンクをブックマークバーにドラッグ&ドロップしてお使いください↓<br>
-          <a href='javascript:(function(e){window.location.href="https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/";})(encodeURIComponent);'>現在のタブで開くやつ</a><br>
-          ドラッグアンドドロップできないブラウザは、以下のURLをブックマークバーに登録してください。<br>
-          <pre style="overflow: auto;">javascript:(function(e){window.location.href="https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/";})(encodeURIComponent);</pre>
-          新規ウィンドウで開きたい場合は↓<br>
-          <a href='javascript:(function(e){window.open("https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/",null,"width=520,height=500");})(encodeURIComponent);'>新規Windowで開くやつ</a><br>
-          ドラッグアンドドロップできないブラウザは、以下のURLをブックマークバーに登録してください。<br>
-          <pre style="overflow: auto;">javascript:(function(e){window.open("https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/",null,"width=520,height=500");})(encodeURIComponent);</pre>
-          
+        このリンクをブックマークバーにドラッグ&ドロップしてお使いください↓<br>
+        <a href='javascript:(function(e){window.location.href="https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/";})(encodeURIComponent);'>現在のタブで開くやつ</a><br>
+        ドラッグアンドドロップできないブラウザは、以下のURLをブックマークバーに登録してください。<br>
+        <pre style="overflow: auto;">javascript:(function(e){window.location.href="https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/";})(encodeURIComponent);</pre>
+        新規ウィンドウで開きたい場合は↓<br>
+        <a href='javascript:(function(e){window.open("https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/",null,"width=520,height=500");})(encodeURIComponent);'>新規Windowで開くやつ</a><br>
+        ドラッグアンドドロップできないブラウザは、以下のURLをブックマークバーに登録してください。<br>
+        <pre style="overflow: auto;">javascript:(function(e){window.open("https://www.dlsite.com/home/mypage/buy/dlgift/product/=/product_id/"+e(location.href.replace(/.*\//, "").replace(/\.html.*$/, ""))+"/",null,"width=520,height=500");})(encodeURIComponent);</pre>
       </v-card-text>
     </v-card>
     <Footer></Footer>

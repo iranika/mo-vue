@@ -8,7 +8,7 @@
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </template>
-    <v-list>
+    <v-list height="100%">
       <v-list-item to="search" @click.stop="menu = false">
         <v-list-item-content>
           <v-list-item-title >詳細検索をひらく<v-icon>mdi-magnify</v-icon></v-list-item-title>
@@ -24,14 +24,14 @@
       </v-list-item>
       
       <v-list-item
-        v-for="(item, i) in items"
+        v-for="(title, i) in titles"
         :key="i"
         :href="getPageUrl(i + 1)"
         @click.stop="menu = false"
-        v-show="isFiltered(item, i)"
+        v-show="isFiltered(title, i)"
       >
         <v-list-item-content>
-          <v-list-item-title>{{ i + 1 }}.{{ item.Title }}</v-list-item-title>
+          <v-list-item-title>{{ i + 1 }}.{{ title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item-action> </v-list-item-action>
@@ -42,7 +42,7 @@
 <script>
 export default {
   props: {
-    items: {},
+    titles: {},
   },
   data: ()=>({
     menu: false,
@@ -52,9 +52,8 @@ export default {
     getPageUrl(index) {
       return `#/?page=${index.toString()}`;
     },
-    isFiltered(item, i){
+    isFiltered(title, i){
       let num = i + 1;
-      let title = item.Title;
       if (`${ num }.${ title }`.toString().indexOf(this.searchText) !== -1){
         return true;
       }else{

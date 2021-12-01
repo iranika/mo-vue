@@ -3,7 +3,9 @@
     <div class="content-center">
       <v-card width="90%" max-width="900px" class="ma-4">
         <v-card-title>
-          びゅあー検索くん㌁ver0.5
+          びゅあー検索くん㌁ver0.6
+          <v-spacer></v-spacer>
+          <v-btn @click="search = ''">クリア</v-btn>
           <v-spacer></v-spacer>
           <v-text-field
             v-model="search"
@@ -13,6 +15,32 @@
             hide-details
           ></v-text-field>
         </v-card-title>
+        <v-card-subtitle>
+          アイコンを押すとキャラ検索ができます。<br />
+          <v-btn
+            v-for="(_, i) in charactors"
+            :key="i"
+            @click="insertChar(charactors[i].name)"
+            fab
+          >
+            <v-avatar>
+              <v-img :src="charactors[i].icon" :alt="charactors[i].name" :title="charactors[i].name"></v-img>
+            </v-avatar>
+          </v-btn>
+
+          <!--
+          下記のボタンを押すことで簡単にキャラクター名で検索できます。<br />
+          <v-btn x-small color="yellow darken-1">せり</v-btn>
+          <v-btn x-small color="light-green darken-1">すずしろ</v-btn>          
+          <v-btn x-small color="red darken-1">すずな</v-btn>
+          <v-btn x-small color="purple darken-1">はこべら</v-btn>          
+          <v-btn x-small>いね</v-btn>
+          <v-btn x-small>たびらこ</v-btn>          
+          <v-btn x-small>いのこ</v-btn>
+          <v-btn x-small>なつな</v-btn>
+          -->
+        </v-card-subtitle>
+
         <v-data-table
           v-model="selecteds"
           show-select
@@ -27,7 +55,7 @@
           dense
         >
           <template v-slot:[`item.No`]="{ item }">
-            {{ Number(item.No)}}
+            {{ Number(item.No) }}
           </template>
           <template v-slot:[`item.Charactors`]="{ item }">
             <v-edit-dialog
@@ -135,6 +163,49 @@ export default class SearchEngine extends Vue {
   ];
   public exDB: any = "";
   public pageData: any = "";
+
+  public charactors = [
+    {
+      name: "せり",
+      icon: "/img/charactor/seri-205.jpg"
+    },
+    {
+      name: "すずしろ",
+      icon: "/img/charactor/suzusiro-241.jpg",
+    },
+    {
+      name: "すずな",
+      icon: "/img/charactor/suzuna-177.jpg",
+    },
+    {
+      name: "はこべら",
+      icon: "/img/charactor/hako-256.jpg",
+    },
+    {
+      name: "いね",
+      icon: "/img/charactor/ine-177.jpg",
+    },
+    {
+      name: "たびらこ",
+      icon: "/img/charactor/tabirako-185.jpg",
+    },
+    {
+      name: "いのこ",
+      icon: "/img/charactor/inoko-251.jpg",
+    },
+    {
+      name: "なつな",
+      icon: "/img/charactor/natuna-250.jpg",
+    }
+  ]
+
+  public insertChar(characror: string){
+    if (this.search.includes(characror)) {
+      this.search = this.search.replaceAll(characror + ",", "")
+    } else {
+      this.search += characror + ",";
+    }
+  }
 
   created() {
     //console.log(this.pageData)

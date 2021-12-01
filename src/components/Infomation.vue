@@ -3,9 +3,36 @@
     <v-expansion-panels flat>
       <v-expansion-panel style="background-color:#f7f7f7;">
         <v-expansion-panel-header>
-          <div class="text-center">お知らせ情報＠2021-08-13</div>
+          <div class="text-center">お知らせ情報＠2021-11-19</div>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
+          <v-card flat>
+            <v-card-text>
+              <h4>11-19 はれ</h4>
+              秋です。寒い。<br />
+              びゅあー検索くんでキャラ検索がしやすくなりました。<br />
+              キャラアイコンをクリック（タップ）すると検索ワードに追加されて便利でございます。<br />
+              それにしても寒いです<br />
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-text>
+              <h4>11-07 なぞ</h4>
+              秋です。寒くなってきた。<br>
+              試験的に道草恋歌が閲覧できる機能を実装しました。<br>
+              左のメニューからどうぞ。気が向いたら検索機能とかシェア機能とか実装します。<br>
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-text>
+              <h4>10月24日 あめ</h4>
+              すっかり秋です。お芋が美味しい季節。<br>
+              びゅあーはタイムラインページを試験的に追加しました。<br>
+              今後、地味なアップデートを予定しています。<br>
+              あと、諸々を統合したポータルアプリ的なやつの試作をはじめました。スマホアプリにもなる感じです（たぶん）<br>
+              旧びゅあーはしばらくこっちに強制的に飛ばします。<br>
+            </v-card-text>
+          </v-card>
           <v-card flat>
             <v-card-text>
               <h4>8月13日 なぞ</h4>
