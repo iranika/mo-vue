@@ -120,7 +120,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/about.eaf13ef2.js.map"
   },
   {
-    "revision": "f8d6744ecf9cfba505d27e79933bcb48",
+    "revision": "f0b1e6a154c6d001c1b482d8d5b3a68a",
     "url": "manifest.json"
   },
   {
