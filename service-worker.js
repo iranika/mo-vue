@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.fe16af2d614691e4d05331f92b807846.js"
+  "precache-manifest.3e3f0a2776203a50880c73dc06d54814.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "mo-vue"});
