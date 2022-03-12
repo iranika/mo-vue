@@ -90,6 +90,12 @@
             </v-list-item-icon>
             <v-list-item-title>マイページ</v-list-item-title>
           </v-list-item>
+          <v-list-item to="/contact">
+            <v-list-item-icon>
+              <v-icon dense>mdi-information</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>お問い合せ</v-list-item-title>
+          </v-list-item>
           <v-spacer></v-spacer>
         </v-list-item-group>
       </v-list>

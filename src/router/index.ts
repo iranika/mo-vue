@@ -15,6 +15,11 @@ const routes = [
     })
   },
   {
+    path: "/contact",
+    name: "contact",
+    component: () => import("../views/Contact.vue")
+  },
+  {
     path: "/timeline",
     name: "timeline",
     component: () => import("../views/Timeline.vue")
