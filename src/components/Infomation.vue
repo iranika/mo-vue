@@ -3,9 +3,17 @@
     <v-expansion-panels flat>
       <v-expansion-panel style="background-color:#f7f7f7;">
         <v-expansion-panel-header>
-          <div class="text-center">お知らせ情報＠2022-01-22</div>
+          <div class="text-center">お知らせ情報＠2022-03-13</div>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
+          <v-card flat>
+            <v-card-text>
+              <h4>03-13 はれ</h4>
+              春が近づいています。<br />
+              メニューにお問合せフォームを追加しました。<br />
+              バグや要望などがありましたら使ってください。<br />
+            </v-card-text>
+          </v-card>
           <v-card flat>
             <v-card-text>
               <h4>01-22 はれ</h4>
