@@ -42,7 +42,7 @@ module.exports = {
           }
         },//*/
         {
-          urlPattern: /https:\/\/mo4koma\.iranika\.info\/.+(sp|top)\.(jp|webp)/,
+          urlPattern: /https:\/\/mo4koma\.iranika\.info\/.+(sp)\.(jp|webp)/,
           handler: "CacheFirst",
           options:{
             cacheName: "mo4koma-images-sp",

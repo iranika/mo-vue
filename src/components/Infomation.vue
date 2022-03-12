@@ -3,9 +3,25 @@
     <v-expansion-panels flat>
       <v-expansion-panel style="background-color:#f7f7f7;">
         <v-expansion-panel-header>
-          <div class="text-center">お知らせ情報＠2021-11-19</div>
+          <div class="text-center">お知らせ情報＠2022-01-22</div>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
+          <v-card flat>
+            <v-card-text>
+              <h4>01-22 はれ</h4>
+              コインハイブ事件の最高裁判決が出ましたのでブログ書きました。<br />
+              <a href="https://ci-en.net/creator/10765/article/587410">https://ci-en.net/creator/10765/article/587410</a>
+              プログラマや開発者は犯罪行為に抵触しないように、コードだけでなく法や判例も読んでいるという話です。<br />
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-text>
+              <h4>12-02 はれ</h4>
+              もう冬です。とても寒い。<br />
+              びゅあーの漫画の横幅を最大1280pxにしました。<br />
+              これで横長の4Kのディスプレイでも縦方向の読みやすさが向上するはずです。たぶん。<br />
+            </v-card-text>
+          </v-card>
           <v-card flat>
             <v-card-text>
               <h4>11-19 はれ</h4>
@@ -123,11 +139,42 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
+
+    <v-expansion-panels flat>
+      <v-expansion-panel style="background-color:#fffecd;">
+        <v-expansion-panel-header>
+          <div class="text-center">ブックマーク（しおり）</div>
+        </v-expansion-panel-header>
+        <v-expansion-panel-content class=".content-center" style="text-align:center">
+          <v-btn class="BookmarkButton" small v-for="v in db.bookmark" :key="v" color="amber" :to="'/?page=' + v">第{{ v }}話</v-btn>
+          <!-- 一括削除ぼたんとか欲しい -->
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </div>
 </template>
 
 <script>
-export default {};
+import { LocalStorageStore } from "../stores/localStorage";
+export default {
+  data: () => ({
+    db: LocalStorageStore.getInstance().db
+  }),
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.BookmarkButton {
+  margin: 5px 5px;
+  color: white;
+  
+}
+.content-center {
+  display: flex;
+  justify-content: center;
+}
+
+.expansion{
+  background-color:#fffecd;
+}
+</style>

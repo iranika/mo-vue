@@ -1,6 +1,7 @@
 {
   "name": "mo-vue",
   "version": "1.22.5",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve:pwa": "http-server --port=80 ./dist",

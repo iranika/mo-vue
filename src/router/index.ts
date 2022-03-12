@@ -24,6 +24,11 @@ const routes = [
     redirect: "/charactor/seri"
   },
   {
+    path: "/dlsite",
+    name: "dlsite",
+    component: () => import("../views/DLsite.vue")
+  },
+  {
     path: "/charactor/:name",
     name: "charactor",
     props: (route: { params: { name: String; }})=> ({

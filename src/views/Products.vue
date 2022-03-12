@@ -41,8 +41,9 @@
           ></v-text-field>
         </v-card-title>
         <v-card-subtitle>
-          ※出演は声優名でのみフィルタできます。<br>
-          ※BOOTHのリンクは作品名で検索しているだけなので精度はご容赦ください。<br>
+          ※出演は声優名でのみフィルタできます。<br />
+          ※キャラ毎に作品を見たい場合は<router-link to="charactor">Charactorページ</router-link>をご利用ください。<br />
+          ※BOOTHのリンクは作品名で検索しているだけなので精度はご容赦ください。<br />
         </v-card-subtitle>
         <v-data-table
           v-model="selecteds"
@@ -144,6 +145,7 @@ export default class Products extends Vue {
     { text: "メイン出演", value: "mainAct" },
     { text: "サブ出演", value: "subAct" },
     { text: "Link", value: "link" },
+    { text: "タグ", value: "hints" },
   ];
   public exDB: any = "";
   public pageData: any = "";
@@ -152,6 +154,7 @@ export default class Products extends Vue {
     let possessionId = itemNo + "-" + site;
     if (this.movue.users.possessions != undefined) return this.movue.users.possessions.includes(possessionId);
   }
+
 
   public clickStar(itemNo:number, site:any){
     const possessionId = itemNo + "-" + site;
@@ -175,7 +178,8 @@ export default class Products extends Vue {
       .map((w: string) => {
         return w.trim();
       })
-      .filter((x) => x);
+      .filter(x => x);
+    
     return (
       words.filter((w) => {
         if (Array.isArray(items)) {
@@ -189,22 +193,22 @@ export default class Products extends Vue {
     );
   }
   private c2a: any = {
-      "餅よもぎ":"すずしろ",
-      "御崎ひより":"すずしろ",
-      "雁庵うずめ":"せり",
-      "藤堂れんげ":"すずな",
-      "真宮ひいろ	":"いね",
-      "愛枝今日子":"たびらこ",
-      "藤村咲樹":"はこべら",
-      "琴香":"はこべら",
-      "箱河ノア":"いのこ",
-      "丹羽うさぎ":"なつな",
-    }
+    "餅よもぎ":"すずしろ",
+    "御崎ひより":"すずしろ",
+    "雁庵うずめ":"せり",
+    "藤堂れんげ":"すずな",
+    "真宮ひいろ	":"いね",
+    "愛枝今日子":"たびらこ",
+    "藤村咲樹":"はこべら",
+    "琴香":"はこべら",
+    "箱河ノア":"いのこ",
+    "丹羽うさぎ":"なつな",
+  }
   public toCharactor(actors: Array<string>){
     return actors.map(a => this.c2a[a] )
   }
   public getBoothLink(Title: string): string {
-    let link: string = `https://booth.pm/ja/search/${Title}`;
+    let link: string = `https://booth.pm/ja/search/${Title}?adult=include`;
     return link;
   }
 

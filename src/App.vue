@@ -158,6 +158,12 @@
         <v-list-item-group
           active-class="deep-purple--text text--accent-4"
         >
+          <v-list-item href="https://mimica.iranika.info" target="new">
+            <v-list-item-icon>
+              <v-icon dense>mdi-apps</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>MimiCa（試験サイト）</v-list-item-title>
+          </v-list-item>
           <v-list-item href="https://michikusa-renka.glideapp.io/" target="new">
             <v-list-item-icon>
               <v-icon dense>mdi-apps</v-icon>

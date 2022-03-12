@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="viewer-content">
     <div
       centered
       style="text-align:center; padding:10px"
@@ -22,6 +22,10 @@
         <div style="text-align: center">
           <v-btn rounded x-small v-on:click="scrollTop()" depressed
             >トップに戻る</v-btn
+          >
+          <v-btn rounded x-small v-on:click="clickBookmark(i + 1)" depressed
+            :class="[isIncludeBookmark(i+1) ? '' : 'light-green']"
+            >ブックマーク</v-btn
           >
           <v-btn
             rounded
@@ -68,7 +72,7 @@
 import ShareTwitterButton from "../components/ShareTwitterButton.vue";
 //import MemoModal from "../components/MemoModal.vue";
 import axios from "axios";
-
+import { LocalStorageStore } from "../stores/localStorage";
 
 export default {
   components: {
@@ -92,6 +96,7 @@ export default {
     memo: "",
     bottom: false,
     dialog: false,
+    db: LocalStorageStore.getInstance().db
   }),
   methods: {
     bottomVisible() {
@@ -101,6 +106,16 @@ export default {
       const bottomOfPage = visible + scrollY + 2 >= pageHeight; // +2 is margin
       //console.log("bottomVisible is fired", {scrollY, visible, pageHeight, bottomOfPage})
       return bottomOfPage || pageHeight < visible;
+    },
+    isIncludeBookmark(p){
+      return LocalStorageStore.getInstance().isIncludeBookmark(p);
+    },
+    clickBookmark(p) {
+      if (LocalStorageStore.getInstance().isIncludeBookmark(p)){
+        LocalStorageStore.getInstance().removeBookmark(p);
+      }else{
+        LocalStorageStore.getInstance().addBookmark(p);
+      }
     },
     addContent(addnum = 1) {
       if (this.pages.length - 1 > Math.max.apply(null, this.show)) {
@@ -195,5 +210,15 @@ export default {
 </script>
 
 <style scoped>
-
+.viewer-content {
+  max-width: 1280px;
+  margin: 0 auto 0 auto;
+}
+.BookmarkButton {
+  margin: 5px 5px;
+}
+.content-center {
+  display: flex;
+  justify-content: center;
+}
 </style>
