@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="content-center">スマートフォンの方はリンク先からの入力をおすすめします→<a href="https://forms.gle/tgtFwAoYT4wdYNY28">こちら</a></div><br/>
     <div class="content-center">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdGDim-yNqk33GifLSD2q2rrpN6eq2Nb5wCMDs0gTF0atyD7g/viewform?embedded=true" width="640" height="1200" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
     </div>

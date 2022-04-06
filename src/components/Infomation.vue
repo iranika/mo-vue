@@ -3,9 +3,17 @@
     <v-expansion-panels flat>
       <v-expansion-panel style="background-color:#f7f7f7;">
         <v-expansion-panel-header>
-          <div class="text-center">お知らせ情報＠2022-03-13</div>
+          <div class="text-center">お知らせ情報＠2022-04-01</div>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
+          <v-card flat>
+            <v-card-text>
+              <h4>04-01 あめ</h4>
+              みちくさびゅあー感謝祭が4/1~4/9の期間で開催されます。<br />
+              好きな話数をTwitterにシェアしてばっくやーど漫画を布教してもらえると助かります。<br />
+              旦那様を増やしたいのです。<br />
+            </v-card-text>
+          </v-card>
           <v-card flat>
             <v-card-text>
               <h4>03-13 はれ</h4>
@@ -18,7 +26,7 @@
             <v-card-text>
               <h4>01-22 はれ</h4>
               コインハイブ事件の最高裁判決が出ましたのでブログ書きました。<br />
-              <a href="https://ci-en.net/creator/10765/article/587410">https://ci-en.net/creator/10765/article/587410</a>
+              <a href="https://ci-en.net/creator/10765/article/587410">https://ci-en.net/creator/10765/article/587410</a><br />
               プログラマや開発者は犯罪行為に抵触しないように、コードだけでなく法や判例も読んでいるという話です。<br />
             </v-card-text>
           </v-card>
